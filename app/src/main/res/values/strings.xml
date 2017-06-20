@@ -1,0 +1,12 @@
+<resources>
+    <string name="sure">确定</string>
+    <string name="cancel">取消</string>
+    <string name="app_name">商城首页</string>
+    <string name="action_reset">重置JSON</string>
+    <string name="index_nextpage_loading">正在加载更多内容</string>
+    <string name="index_nextpage_error">网络错误，请重试</string>
+    <string name="index_nextpage_nomore">没有更多内容了</string>
+    <string name="error_check_net">网络异常，请检查网络</string>
+    <string name="data_error">数据异常</string>
+    <string name="title_activity_setting">编辑Json</string>
+</resources>

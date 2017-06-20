@@ -1,0 +1,845 @@
+{
+  "layout": "grid",
+  "cellCount": 2,
+  "backColor": "#EBEBEB",
+  "modules": [
+    {
+      "type": "horizontalBanner",
+      "height": "0.5sw",
+      "autoScroll": true,
+      "manual": true,
+      "duration": 1000,
+      "delay": 1000,
+      "items": [
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/720p_01.jpg",
+          "link": "海天梦享"
+        },
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/720p_01.jpg",
+          "link": "海天梦享"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "link": "menu",
+      "backColor": "#FFFFFF",
+      "backImage": "",
+      "rowHeight": "1bw",
+      "colCount": 5,
+      "items": [
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/720p_02.jpg",
+          "link": "京东超市"
+        },
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/720p_03.jpg",
+          "link": "全球购"
+        },
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/720p_04.jpg",
+          "link": "服装城"
+        },
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/720p_05.jpg",
+          "link": "京东生鲜"
+        },
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/720p_06.jpg",
+          "link": "京东到家"
+        },
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/720p_07.jpg",
+          "link": "充值中心"
+        },
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/720p_08.jpg",
+          "link": "领京豆"
+        },
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/720p_09.jpg",
+          "link": "领劵"
+        },
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/720p_10.jpg",
+          "link": "慧赚钱"
+        },
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/720p_11.jpg",
+          "link": "全部"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "src": "file:///android_asset/jd01/images/720p_12.jpg",
+      "link": "梦之蓝"
+    },
+    {
+      "type": "linear",
+      "orientation": "horizontal",
+      "link": "bar",
+      "backColor": "#FFFFFF",
+      "height": "0.1sw",
+      "items": [
+        {
+          "type": "image",
+          "height": "fill",
+          "src": "file:///android_asset/jd01/images/1080p_13.jpg",
+          "link": "京东秒杀"
+        },
+        {
+          "type": "text",
+          "text": "10点场",
+          "height": "fill",
+          "textSize": 18,
+          "marginLeft": 5,
+          "textColor": "#000000",
+          "textStyle": "bold",
+          "gravity": "center",
+          "link": "10点场"
+        },
+        {
+          "type": "countdownClock",
+          "link": "clock",
+          "marginLeft": 5,
+          "height": "fill",
+          "textColor": "#FFFFFF",
+          "clockEndTime": "2017-02-09 01:00:00",
+          "textBackColor": "#FF0000",
+          "textSize": 14,
+          "link": "倒计时"
+        },
+        {
+          "weight": 1,
+          "height": "fill",
+          "type": "text",
+          "marginRight": 10,
+          "text": "秒杀新货迎新年>",
+          "textColor": "#FF0000",
+          "gravity": "right|centerVertical",
+          "maxLine": 1,
+          "link": "秒杀迎新年"
+        }
+      ]
+    },
+    {
+      "type": "gallery",
+      "link": "bar",
+      "backColor": "#FFFFFF",
+      "height": "0.5sw",
+      "items": [
+        {
+          "type": "frame",
+          "link": "值得买",
+          "width": "0.3sw",
+          "items": [
+            {
+              "type": "image",
+              "width": "fill",
+              "scaleType": "fitCenter",
+              "backColor": "#FF0000",
+              "src": "file:///android_asset/jd01/images/720p_82.jpg"
+            },
+            {
+              "type": "text",
+              "text": "Frame测试",
+              "backColor": "#99000000",
+              "style": "bold",
+              "width": "fill",
+              "gravity": "center",
+              "textColor": "#FFFFFF",
+              "layoutGravity": "bottom"
+            },
+            {
+              "type": "image",
+              "src": "file:///android_asset/jd01/images/new.png",
+              "width": "0.15sw",
+              "height": "wrap",
+              "scaleType": "fitCenter",
+              "layoutGravity": "top|left"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/720p_16.jpg",
+          "link": "推荐笔记本"
+        },
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/720p_14.jpg",
+          "link": "值得买2"
+        },
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/720p_16.jpg",
+          "link": "推荐2"
+        },
+        {
+          "type": "text",
+          "text": "查\n看\n更\n多",
+          "textColor": "#FF0000",
+          "gravity": "center",
+          "link": "查看更多"
+        },
+        {
+          "type": "text",
+          "text": ">>",
+          "textColor": "#FF0000",
+          "gravity": "center",
+          "link": "查看更多"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "src": "file:///android_asset/jd01/images/720p_18.jpg",
+      "link": "走亲访友"
+    },
+    {
+      "type": "table",
+      "colCount": 2,
+      "height": "0.6sw",
+      "items": [
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/720p_19.jpg",
+          "link": "超市"
+        },
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/720p_20.jpg",
+          "link": "nokia"
+        },
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/720p_21.jpg",
+          "link": "下单"
+        },
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/720p_22.jpg",
+          "link": "家电"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "colCount": 4,
+      "height": "0.7sw",
+      "items": [
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/720p_23.jpg",
+          "link": "手机"
+        },
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/720p_24.jpg",
+          "link": "新衣"
+        },
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/720p_25.jpg",
+          "link": "电脑"
+        },
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/720p_26.jpg",
+          "link": "通信"
+        },
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/720p_27.jpg",
+          "link": "固态"
+        },
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/720p_28.jpg",
+          "link": "户外"
+        },
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/720p_29.jpg",
+          "link": "数码"
+        },
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/720p_30.jpg",
+          "link": "男装"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "src": "file:///android_asset/jd01/images/720p_31.jpg",
+      "link": "发现好货"
+    },
+    {
+      "type": "image",
+      "src": "file:///android_asset/jd01/images/720p_32.jpg",
+      "link": "爱生活"
+    },
+    {
+      "type": "grid",
+      "height": "wrap",
+      "rowHeight": "1bw",
+      "rowCount": 3,
+      "colCount": 4,
+      "items": [
+        {
+          "type": "image",
+          "rowStart": 1,
+          "colStart": 1,
+          "rowSpan": 1,
+          "colSpan": 2,
+          "src": "file:///android_asset/jd01/images/720p_33.jpg",
+          "link": "3c"
+        },
+        {
+          "type": "image",
+          "rowStart": 1,
+          "colStart": 3,
+          "rowSpan": 1,
+          "colSpan": 2,
+          "src": "file:///android_asset/jd01/images/720p_34.jpg",
+          "link": "家电"
+        },
+        {
+          "type": "image",
+          "rowStart": 2,
+          "colStart": 1,
+          "rowSpan": 1,
+          "colSpan": 2,
+          "src": "file:///android_asset/jd01/images/720p_35.jpg",
+          "link": "超市"
+        },
+        {
+          "type": "image",
+          "rowStart": 2,
+          "colStart": 3,
+          "rowSpan": 1,
+          "colSpan": 2,
+          "src": "file:///android_asset/jd01/images/720p_36.jpg",
+          "link": "爱家"
+        },
+        {
+          "type": "image",
+          "rowStart": 3,
+          "colStart": 1,
+          "rowSpan": 1,
+          "colSpan": 1,
+          "src": "file:///android_asset/jd01/images/720p_37.jpg",
+          "link": "爱宝宝"
+        },
+        {
+          "type": "image",
+          "rowStart": 3,
+          "colStart": 2,
+          "rowSpan": 1,
+          "colSpan": 1,
+          "src": "file:///android_asset/jd01/images/720p_38.jpg",
+          "link": "爱美丽"
+        },
+        {
+          "type": "image",
+          "rowStart": 3,
+          "colStart": 3,
+          "rowSpan": 1,
+          "colSpan": 1,
+          "src": "file:///android_asset/jd01/images/720p_39.jpg",
+          "link": "爱吃"
+        },
+        {
+          "type": "image",
+          "rowStart": 3,
+          "colStart": 4,
+          "rowSpan": 1,
+          "colSpan": 1,
+          "src": "file:///android_asset/jd01/images/720p_40.jpg",
+          "link": "爱逛"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "src": "file:///android_asset/jd01/images/720p_41.jpg",
+      "link": "360手机"
+    },
+    {
+      "type": "image",
+      "src": "file:///android_asset/jd01/images/720p_42.jpg",
+      "link": "品质"
+    },
+    {
+      "type": "grid",
+      "height": "1sw",
+      "rowCount": 3,
+      "colCount": 4,
+      "items": [
+        {
+          "type": "image",
+          "rowStart": 1,
+          "colStart": 1,
+          "rowSpan": 1,
+          "colSpan": 2,
+          "src": "file:///android_asset/jd01/images/720p_43.jpg",
+          "link": "尖货"
+        },
+        {
+          "type": "image",
+          "rowStart": 1,
+          "colStart": 3,
+          "rowSpan": 1,
+          "colSpan": 2,
+          "src": "file:///android_asset/jd01/images/720p_44.jpg",
+          "link": "精选"
+        },
+        {
+          "type": "linear",
+          "backColor": "#FFFFFF",
+          "rowStart": 2,
+          "colStart": 1,
+          "rowSpan": 1,
+          "colSpan": 2,
+          "link": "体育",
+          "items": [
+            {
+              "type": "linear",
+              "orientation": "vertical",
+              "paddingLeft": 10,
+              "paddingTop": 10,
+              "items": [
+                {
+                  "type": "text",
+                  "text": "京东体育",
+                  "textStyle": "bold",
+                  "textColor": "#000000",
+                  "textSize": 20
+                },
+                {
+                  "type": "text",
+                  "text": "智能山地车"
+                }
+              ]
+            },
+            {
+              "type": "image",
+              "weight": 1,
+              "width": "fill",
+              "height": "wrap",
+              "layoutGravity": "bottom",
+              "src": "file:///android_asset/jd01/images/720p_45.jpg",
+              "link": "体育2"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "rowStart": 2,
+          "colStart": 3,
+          "rowSpan": 1,
+          "colSpan": 2,
+          "src": "file:///android_asset/jd01/images/720p_46.jpg",
+          "link": "大牌"
+        },
+        {
+          "type": "image",
+          "rowStart": 3,
+          "colStart": 1,
+          "rowSpan": 1,
+          "colSpan": 1,
+          "src": "file:///android_asset/jd01/images/720p_47.jpg",
+          "link": "时尚"
+        },
+        {
+          "type": "image",
+          "rowStart": 3,
+          "colStart": 2,
+          "rowSpan": 1,
+          "colSpan": 1,
+          "src": "file:///android_asset/jd01/images/720p_48.jpg",
+          "link": "首饰"
+        },
+        {
+          "type": "image",
+          "rowStart": 3,
+          "colStart": 3,
+          "rowSpan": 1,
+          "colSpan": 1,
+          "src": "file:///android_asset/jd01/images/720p_49.jpg",
+          "link": "设计师"
+        },
+        {
+          "type": "image",
+          "rowStart": 3,
+          "colStart": 4,
+          "rowSpan": 1,
+          "colSpan": 1,
+          "src": "file:///android_asset/jd01/images/720p_50.jpg",
+          "link": "达人"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "src": "file:///android_asset/jd01/images/720p_51.jpg",
+      "link": "春节不打烊"
+    },
+    {
+      "type": "image",
+      "src": "file:///android_asset/jd01/images/720p_52.jpg",
+      "link": "特色"
+    },
+    {
+      "type": "grid",
+      "height": "1sw",
+      "rowCount": 3,
+      "colCount": 4,
+      "items": [
+        {
+          "type": "image",
+          "rowStart": 1,
+          "colStart": 1,
+          "rowSpan": 1,
+          "colSpan": 2,
+          "src": "file:///android_asset/jd01/images/720p_53.jpg",
+          "link": "智能"
+        },
+        {
+          "type": "image",
+          "rowStart": 1,
+          "colStart": 3,
+          "rowSpan": 1,
+          "colSpan": 1,
+          "src": "file:///android_asset/jd01/images/720p_54.jpg",
+          "link": "众筹"
+        },
+        {
+          "type": "image",
+          "rowStart": 1,
+          "colStart": 4,
+          "rowSpan": 1,
+          "colSpan": 1,
+          "src": "file:///android_asset/jd01/images/720p_55.jpg",
+          "link": "旅行"
+        },
+        {
+          "type": "image",
+          "rowStart": 2,
+          "colStart": 1,
+          "rowSpan": 1,
+          "colSpan": 2,
+          "src": "file:///android_asset/jd01/images/720p_56.jpg",
+          "link": "白条"
+        },
+        {
+          "type": "image",
+          "rowStart": 2,
+          "colStart": 3,
+          "rowSpan": 1,
+          "colSpan": 1,
+          "src": "file:///android_asset/jd01/images/720p_57.jpg",
+          "link": "爱车"
+        },
+        {
+          "type": "image",
+          "rowStart": 2,
+          "colStart": 4,
+          "rowSpan": 1,
+          "colSpan": 1,
+          "src": "file:///android_asset/jd01/images/720p_58.jpg",
+          "link": "电影"
+        },
+        {
+          "type": "image",
+          "rowStart": 3,
+          "colStart": 1,
+          "rowSpan": 1,
+          "colSpan": 1,
+          "src": "file:///android_asset/jd01/images/720p_59.jpg",
+          "link": "二手"
+        },
+        {
+          "type": "image",
+          "rowStart": 3,
+          "colStart": 2,
+          "rowSpan": 1,
+          "colSpan": 1,
+          "src": "file:///android_asset/jd01/images/720p_60.jpg",
+          "link": "大药房"
+        },
+        {
+          "type": "image",
+          "rowStart": 3,
+          "colStart": 3,
+          "rowSpan": 1,
+          "colSpan": 1,
+          "src": "file:///android_asset/jd01/images/720p_61.jpg",
+          "link": "宝宝"
+        },
+        {
+          "type": "image",
+          "rowStart": 3,
+          "colStart": 4,
+          "rowSpan": 1,
+          "colSpan": 1,
+          "src": "file:///android_asset/jd01/images/720p_62.jpg",
+          "link": "拍卖"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "src": "file:///android_asset/jd01/images/720p_63.jpg",
+      "link": "nokia6"
+    },
+    {
+      "type": "image",
+      "src": "file:///android_asset/jd01/images/720p_64.jpg",
+      "link": "逛商场"
+    },
+    {
+      "type": "grid",
+      "height": "1.33sw",
+      "rowCount": 4,
+      "colCount": 4,
+      "items": [
+        {
+          "type": "image",
+          "rowStart": 1,
+          "colStart": 1,
+          "rowSpan": 1,
+          "colSpan": 2,
+          "src": "file:///android_asset/jd01/images/720p_65.jpg",
+          "link": "时尚"
+        },
+        {
+          "type": "image",
+          "rowStart": 1,
+          "colStart": 3,
+          "rowSpan": 1,
+          "colSpan": 2,
+          "src": "file:///android_asset/jd01/images/720p_66.jpg",
+          "link": "手机"
+        },
+        {
+          "type": "image",
+          "rowStart": 2,
+          "colStart": 1,
+          "rowSpan": 1,
+          "colSpan": 2,
+          "src": "file:///android_asset/jd01/images/720p_67.jpg",
+          "link": "大家电"
+        },
+        {
+          "type": "image",
+          "rowStart": 2,
+          "colStart": 3,
+          "rowSpan": 1,
+          "colSpan": 2,
+          "src": "file:///android_asset/jd01/images/720p_68.jpg",
+          "link": "母婴"
+        },
+        {
+          "type": "image",
+          "rowStart": 3,
+          "colStart": 1,
+          "rowSpan": 1,
+          "colSpan": 1,
+          "src": "file:///android_asset/jd01/images/720p_69.jpg",
+          "link": "医药"
+        },
+        {
+          "type": "image",
+          "rowStart": 3,
+          "colStart": 2,
+          "rowSpan": 1,
+          "colSpan": 1,
+          "src": "file:///android_asset/jd01/images/720p_70.jpg",
+          "link": "电脑"
+        },
+        {
+          "type": "image",
+          "rowStart": 3,
+          "colStart": 3,
+          "rowSpan": 1,
+          "colSpan": 1,
+          "src": "file:///android_asset/jd01/images/720p_71.jpg",
+          "link": "鞋靴"
+        },
+        {
+          "type": "image",
+          "rowStart": 3,
+          "colStart": 4,
+          "rowSpan": 1,
+          "colSpan": 1,
+          "src": "file:///android_asset/jd01/images/720p_72.jpg",
+          "link": "小家电"
+        },
+        {
+          "type": "image",
+          "rowStart": 4,
+          "colStart": 1,
+          "rowSpan": 1,
+          "colSpan": 1,
+          "src": "file:///android_asset/jd01/images/720p_73.jpg",
+          "link": "生鲜"
+        },
+        {
+          "type": "image",
+          "rowStart": 4,
+          "colStart": 2,
+          "rowSpan": 1,
+          "colSpan": 1,
+          "src": "file:///android_asset/jd01/images/720p_74.jpg",
+          "link": "户外"
+        },
+        {
+          "type": "image",
+          "rowStart": 4,
+          "colStart": 3,
+          "rowSpan": 1,
+          "colSpan": 1,
+          "src": "file:///android_asset/jd01/images/720p_75.jpg",
+          "link": "图书"
+        },
+        {
+          "type": "image",
+          "rowStart": 4,
+          "colStart": 4,
+          "rowSpan": 1,
+          "colSpan": 1,
+          "src": "file:///android_asset/jd01/images/720p_76.jpg",
+          "link": "医药"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "src": "file:///android_asset/jd01/images/720p_77.jpg",
+      "link": "零食"
+    },
+    {
+      "type": "image",
+      "src": "file:///android_asset/jd01/images/720p_78.jpg",
+      "link": "发现好店"
+    },
+    {
+      "type": "table",
+      "colCount": 2,
+      "height": "0.35sw",
+      "items": [
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/720p_79.jpg",
+          "link": "精选"
+        },
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/720p_80.jpg",
+          "link": "外设"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "src": "file:///android_asset/jd01/images/720p_81.jpg",
+      "link": "清单"
+    },
+    {
+      "type": "table",
+      "colCount": 2,
+      "height": "0.45sw",
+      "items": [
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/720p_82.jpg",
+          "link": "U盘"
+        },
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/720p_83.jpg",
+          "link": "性能强"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "src": "file:///android_asset/jd01/images/720p_84.jpg",
+      "link": "直播"
+    },
+    {
+      "type": "table",
+      "colCount": 2,
+      "height": "0.5sw",
+      "items": [
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/720p_85.jpg",
+          "link": "现场"
+        },
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/720p_86.jpg",
+          "link": "VR"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "src": "file:///android_asset/jd01/images/720p_87.jpg",
+      "link": "为你推荐"
+    },
+    {
+      "type": "image",
+      "colSpan": 1,
+      "src": "file:///android_asset/jd01/images/720p_88.jpg",
+      "link": "推荐产品1"
+    },
+    {
+      "type": "image",
+      "colSpan": 1,
+      "src": "file:///android_asset/jd01/images/720p_89.jpg",
+      "link": "推荐产品2"
+    },
+    {
+      "type": "image",
+      "colSpan": 1,
+      "src": "file:///android_asset/jd01/images/720p_90.jpg",
+      "link": "推荐产品3"
+    },
+    {
+      "type": "image",
+      "colSpan": 1,
+      "src": "file:///android_asset/jd01/images/720p_91.jpg",
+      "link": "推荐产品4"
+    },
+    {
+      "type": "image",
+      "colSpan": 1,
+      "src": "file:///android_asset/jd01/images/720p_92.jpg",
+      "link": "推荐产品5"
+    },
+    {
+      "type": "image",
+      "colSpan": 1,
+      "src": "file:///android_asset/jd01/images/720p_93.jpg",
+      "link": "推荐产品6"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:id="@+id/llBarCenter"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@id/llBarRight"
+        android:layout_toRightOf="@id/llBarLeft">
+
+        <com.zjsx.blocklayout.widget.roundview.RoundEditText
+            android:id="@+id/etSearch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="12dp"
+            android:drawableLeft="@mipmap/icon_search"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical"
+            android:imeOptions="actionSearch"
+            android:spacing="5dp"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:textColor="@color/font_hint_color"
+            android:textColorHint="@color/font_hint_color"
+            android:textSize="13sp"
+            app:rv_backgroundColor="@color/white"
+            app:rv_cornerRadius="5dp"/>
+    </RelativeLayout>
+</merge>

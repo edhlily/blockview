@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="gridContainerItemTagId" type="id"/>
+    <item name="horiaontalBannerTagId" type="id"/>
+    <item name="rootHolder" type="id"/>
+</resources>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zsjx.store.homepage.MainActivityFragment"
+    tools:showIn="@layout/activity_main">
+
+
+    <com.zjsx.blocklayout.widget.BlockView
+        android:id="@+id/rvMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:overScrollMode="never"
+        android:scrollbars="none" />
+
+    <View
+        android:id="@+id/viewTop"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@android:color/transparent"/>
+
+    <include
+        android:id="@+id/appBar"
+        layout="@layout/layout_appbar_index"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/viewTop"/>
+
+
+    <View
+        android:id="@+id/appBarShadow"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/appBar"
+        android:background="@drawable/index_divider"
+        android:visibility="gone"/>
+</RelativeLayout>
