@@ -1,9 +1,11 @@
 # blockview
 Android动态格子布局（淘宝，京东等首页）
 
+![https://github.com/zjsx/blockview/blob/master/screen/blockview-01.png?raw=true](https://github.com/zjsx/blockview/blob/master/screen/blockview-01.png?raw=true)
 
+![https://github.com/zjsx/blockview/blob/master/screen/blockview-05.png?raw=true](https://github.com/zjsx/blockview/blob/master/screen/blockview-05.png?raw=true)
 
-一套可以开发动态商城首页，营造节日气氛，在线更新布局的Android动态布局框架。框架和核心View继承RecyclerView并包装holder的处理。开发者只需关心JSON的编写以及按照接口定义完成自定义布局的编写。目前已经默认支持9种布局及控件。
+这是一套可以开发动态商城首页，营造节日气氛，在线更新布局的Android动态布局框架。框架和核心View继承RecyclerView并包装holder的处理。开发者只需关心JSON的编写以及按照接口定义完成自定义布局的编写。目前已经默认支持9种布局及控件。
 
 ```Android
 //本库默认支持的Block
@@ -230,7 +232,11 @@ modules里面可以添加任意多个子item，item的类型使用type定义，�
 
 先看下效果：
 
+![https://github.com/zjsx/blockview/blob/master/screen/blockview-01.png?raw=true](https://github.com/zjsx/blockview/blob/master/screen/blockview-01.png?raw=true)
 
+![https://github.com/zjsx/blockview/blob/master/screen/blockview-02.png?raw=true](https://github.com/zjsx/blockview/blob/master/screen/blockview-02.png?raw=true)
+
+![https://github.com/zjsx/blockview/blob/master/screen/blockview-03.png?raw=true](https://github.com/zjsx/blockview/blob/master/screen/blockview-03.png?raw=true)
 
 json文件
 
