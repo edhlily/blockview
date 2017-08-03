@@ -27,6 +27,7 @@ import com.zjsx.blocklayout.parser.EmptyNullParser;
 import com.zjsx.blocklayout.parser.FillParser;
 import com.zjsx.blocklayout.parser.PXParser;
 import com.zjsx.blocklayout.parser.SHParser;
+import com.zjsx.blocklayout.parser.SPParser;
 import com.zjsx.blocklayout.parser.SWParser;
 import com.zjsx.blocklayout.parser.SizeParser;
 import com.zjsx.blocklayout.parser.WrapParser;
@@ -95,6 +96,7 @@ public abstract class BlockManager {
         globalSizeParsers.add(new EmptyNullParser());
         globalSizeParsers.add(new PXParser());
         globalSizeParsers.add(new DPParser(context));
+        globalSizeParsers.add(new SPParser(context));
         globalSizeParsers.add(new WrapParser());
         globalSizeParsers.add(new FillParser());
         globalSizeParsers.add(new SWParser());
@@ -185,29 +187,6 @@ public abstract class BlockManager {
      */
     public BlockHolder getHolder(ViewGroup parent, int viewType) {
         return viewTypeObjectMap.get(viewType).getHolder(this, parent);
-    }
-
-    /**
-     * 用于自绘制组件的字体大小
-     *
-     * @param context
-     * @param size
-     * @return
-     */
-    public static float getFontPx(Context context, float size) {
-        return BlockUtil.dip2px(context, size);
-    }
-
-    /**
-     * 用户系统控件的字体大小
-     *
-     * @param textView
-     * @param size
-     */
-    public static void setTextSize(TextView textView, float size) {
-        if (size > 0) {
-            textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
-        }
     }
 
     /**

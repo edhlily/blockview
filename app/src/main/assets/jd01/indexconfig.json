@@ -105,7 +105,7 @@
           "type": "text",
           "text": "10点场",
           "height": "fill",
-          "textSize": 18,
+          "textSize": "18sp",
           "marginLeft": 5,
           "textColor": "#000000",
           "textStyle": "bold",
@@ -120,7 +120,7 @@
           "textColor": "#FFFFFF",
           "clockEndTime": "2017-02-09 01:00:00",
           "textBackColor": "#FF0000",
-          "textSize": 14,
+          "textSize": "14sp",
           "link": "倒计时"
         },
         {
@@ -429,7 +429,7 @@
                   "text": "京东体育",
                   "textStyle": "bold",
                   "textColor": "#000000",
-                  "textSize": 20
+                  "textSize": "20sp"
                 },
                 {
                   "type": "text",

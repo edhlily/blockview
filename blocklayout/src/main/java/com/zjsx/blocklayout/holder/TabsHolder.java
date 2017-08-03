@@ -2,6 +2,7 @@ package com.zjsx.blocklayout.holder;
 
 import android.graphics.drawable.StateListDrawable;
 import android.support.v7.widget.AppCompatRadioButton;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
@@ -54,7 +55,7 @@ public class TabsHolder extends BlockHolder<TabBar> {
             } else {
                 rb.setBackgroundColor(BlockManager.getBackColor(tabBar.getTabItems().get(i).getBackColor()));
             }
-            BlockManager.setTextSize(rb, tabBar.getTabItems().get(i).getTextSize());
+            rb.setTextSize(TypedValue.COMPLEX_UNIT_PX,config.getSize(tabBar.getTabItems().get(i).getTextSize()));
             BlockManager.setTextColor(rb, tabBar.getTabItems().get(i).getTextColor());
             rb.setText(tabItem.getText());
             rb.setTag(i);

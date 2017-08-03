@@ -9,7 +9,7 @@ public class TextItem extends Block<TextItem> {
     private String text;
     private String textColor;
     private String gravity;
-    private float textSize;
+    private String textSize;
     private int maxLine;
     private String textStyle;
 
@@ -37,11 +37,11 @@ public class TextItem extends Block<TextItem> {
         this.textColor = textColor;
     }
 
-    public float getTextSize() {
+    public String getTextSize() {
         return textSize;
     }
 
-    public void setTextSize(float textSize) {
+    public void setTextSize(String textSize) {
         this.textSize = textSize;
     }
 

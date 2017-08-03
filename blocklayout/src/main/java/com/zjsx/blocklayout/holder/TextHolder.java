@@ -1,5 +1,6 @@
 package com.zjsx.blocklayout.holder;
 
+import android.util.TypedValue;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -12,7 +13,7 @@ public class TextHolder extends BlockHolder<TextItem> {
         TextView tv = (TextView) itemView;
         tv.setText(item.getText());
         BlockManager.setTextColor(tv, item.getTextColor());
-        BlockManager.setTextSize(tv, item.getTextSize());
+        tv.setTextSize(TypedValue.COMPLEX_UNIT_PX,config.getSize(item.getTextSize()));
         tv.setGravity(config.getViewGravity(item.getGravity()));
         tv.setTypeface(null, config.getTextStyle(item.getTextStyle()));
         if (item.getMaxLine() != 0) {

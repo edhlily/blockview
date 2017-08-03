@@ -14,7 +14,7 @@ public class TabItem extends Block<TabItem> {
     private String selectedBackColor;
     private String backImage;
     private String selectedBackImage;
-    private float textSize;
+    private String textSize;
     private Block item;
 
     public int getTabIndex() {
@@ -81,11 +81,11 @@ public class TabItem extends Block<TabItem> {
         this.selectedBackImage = selectedBackImage;
     }
 
-    public float getTextSize() {
+    public String getTextSize() {
         return textSize;
     }
 
-    public void setTextSize(float textSize) {
+    public void setTextSize(String textSize) {
         this.textSize = textSize;
     }
 

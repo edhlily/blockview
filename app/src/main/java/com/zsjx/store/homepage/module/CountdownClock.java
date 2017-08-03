@@ -13,7 +13,7 @@ public class CountdownClock extends Block<CountdownClock> {
     private String textColor;
     private String clockEndTime;
     private String textBackColor;
-    private float textSize;
+    private String textSize;
 
     public String getTextColor() {
         return textColor;
@@ -39,11 +39,11 @@ public class CountdownClock extends Block<CountdownClock> {
         this.textBackColor = textBackColor;
     }
 
-    public float getTextSize() {
+    public String getTextSize() {
         return textSize;
     }
 
-    public void setTextSize(float textSize) {
+    public void setTextSize(String textSize) {
         this.textSize = textSize;
     }
 

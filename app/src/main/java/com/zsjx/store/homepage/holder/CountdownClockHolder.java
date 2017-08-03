@@ -29,7 +29,7 @@ public class CountdownClockHolder extends BlockHolder<CountdownClock> {
             }
             mCountdownView.setTimeBgColor(BlockManager.getBackColor(barClock.getTextBackColor()));
             mCountdownView.setTimeTextColor(BlockManager.getBackColor(barClock.getTextColor()));
-            float fontSize = BlockManager.getFontPx(itemView.getContext(), barClock.getTextSize());
+            float fontSize = config.getSize(barClock.getTextSize());
             if (fontSize != 0) {
                 mCountdownView.setTimeTextSize(fontSize);
             }
