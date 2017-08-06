@@ -1,8 +1,6 @@
 package com.zjsx.blocklayout.widget;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,20 +10,19 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.zjsx.blocklayout.config.BlockManager;
-import com.zjsx.blocklayout.holder.BlockHolder;
-import com.zjsx.blocklayout.holder.TabsHolder;
-import com.zjsx.blocklayout.module.Block;
 import com.zjsx.blocklayout.config.BlockConfig;
-import com.zjsx.blocklayout.module.ImageItem;
+import com.zjsx.blocklayout.config.BlockContext;
+import com.zjsx.blocklayout.holder.BlockHolder;
+import com.zjsx.blocklayout.module.Block;
+import com.zjsx.blocklayout.config.BlockDataConfig;
 import com.zjsx.blocklayout.tools.BlockUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.zjsx.blocklayout.config.BlockConfig.LAYOUT_TYPE_GRID;
-import static com.zjsx.blocklayout.config.BlockConfig.LAYOUT_TYPE_LINEAR;
-import static com.zjsx.blocklayout.config.BlockConfig.LAYOUT_TYPE_STAGGER;
+import static com.zjsx.blocklayout.config.BlockDataConfig.LAYOUT_TYPE_GRID;
+import static com.zjsx.blocklayout.config.BlockDataConfig.LAYOUT_TYPE_LINEAR;
+import static com.zjsx.blocklayout.config.BlockDataConfig.LAYOUT_TYPE_STAGGER;
 
 
 public class BlockView extends RecyclerView {
@@ -34,9 +31,9 @@ public class BlockView extends RecyclerView {
 
     private final Adapter adapter = new BlockAdapter();
 
-    private BlockManager blockManager;
+    private BlockContext blockContext;
 
-    private BlockConfig config;
+    private BlockDataConfig config;
 
     private BlockItemDecoration decoration;
 
@@ -50,8 +47,10 @@ public class BlockView extends RecyclerView {
 
     public BlockView(Context context, @Nullable AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        blockContext = new BlockContext(context);
         setItemViewCacheSize(50);
         setOverScrollMode(View.OVER_SCROLL_NEVER);
+        super.setAdapter(adapter);
     }
 
     /*不允许从外部设置Adapter*/
@@ -61,41 +60,36 @@ public class BlockView extends RecyclerView {
         throw new RuntimeException("Adapter already set!");
     }
 
-    public BlockManager getBlockManager() {
-        return blockManager;
+    public BlockContext getBlockContext() {
+        return blockContext;
     }
 
-    public void setBlockManager(BlockManager blockManager) {
-        this.blockManager = blockManager;
-        super.setAdapter(adapter);
-    }
-
-    public BlockConfig getConfig() {
+    public BlockDataConfig getConfig() {
         return config;
     }
 
-    public void setConfig(BlockConfig config) {
-        if (blockManager == null) {
-            throw new NullPointerException("Please set BlockManager first!");
+    public void setConfig(BlockDataConfig config) {
+        if (blockContext == null) {
+            throw new NullPointerException("Please set BlockContext first!");
         }
         switch (String.valueOf(config.getLayout())) {
             case "grid":
-                blockManager.setCurentLayoutType(LAYOUT_TYPE_GRID);
+                blockContext.setCurentLayoutType(LAYOUT_TYPE_GRID);
                 break;
             case "stagger":
-                blockManager.setCurentLayoutType(LAYOUT_TYPE_STAGGER);
+                blockContext.setCurentLayoutType(LAYOUT_TYPE_STAGGER);
                 break;
             default:
-                blockManager.setCurentLayoutType(LAYOUT_TYPE_LINEAR);
+                blockContext.setCurentLayoutType(LAYOUT_TYPE_LINEAR);
                 break;
         }
         this.config = config;
 
         if (!BlockUtil.isEmpty(config.getBackImage())) {
-            blockManager.setBackgroundImage(this, config.getBackImage(), Color.TRANSPARENT);
+            BlockConfig.getInstance().getImageLoader().setBackgroundImage(this, config.getBackImage());
         }
 
-        setBackgroundColor(BlockManager.getBackColor(config.getBackColor()));
+        setBackgroundColor(BlockConfig.getInstance().getBackColor(config.getBackColor()));
 
         setLayoutManager();
         setData(config.getModules());
@@ -104,7 +98,7 @@ public class BlockView extends RecyclerView {
     private void setLayoutManager() {
         final int cellCount = config.getCellCount() > 0 ? config.getCellCount() : 1;
         LayoutManager layoutManager;
-        switch (blockManager.getCurentLayoutType()) {
+        switch (blockContext.getCurentLayoutType()) {
 
             case LAYOUT_TYPE_STAGGER:
                 StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(cellCount, VERTICAL);
@@ -134,7 +128,7 @@ public class BlockView extends RecyclerView {
         if (decoration != null) {
             removeItemDecoration(decoration);
         }
-        decoration = new BlockItemDecoration(blockManager, config);
+        decoration = new BlockItemDecoration(blockContext, config);
         addItemDecoration(decoration);
         setLayoutManager(layoutManager);
     }
@@ -155,7 +149,7 @@ public class BlockView extends RecyclerView {
         adapter.notifyDataSetChanged();
     }
 
-    class BlockAdapter extends RecyclerView.Adapter<BlockHolder> implements TabsHolder.ContainerReplacer {
+    private class BlockAdapter extends RecyclerView.Adapter<BlockHolder> {
 
         @Override
         public long getItemId(int position) {
@@ -165,12 +159,12 @@ public class BlockView extends RecyclerView {
 
         @Override
         public int getItemViewType(int position) {
-            return blockManager.getViewType(data.get(position));
+            return BlockConfig.getInstance().getViewType(data.get(position));
         }
 
         @Override
         public BlockHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            BlockHolder blockHolder = blockManager.getHolder(parent, viewType);
+            BlockHolder blockHolder = blockContext.getHolder(parent, viewType);
             return blockHolder;
         }
 
@@ -181,19 +175,19 @@ public class BlockView extends RecyclerView {
             block = data.get(position);
             if (block.equals(holder.getBlock())) return;
             try {
-                int heightSize = blockManager.getSize(block.getHeight());
+                int heightSize = BlockConfig.getInstance().getSize(block.getHeight());
 
                 ViewGroup.LayoutParams layoutParams;
 
-                switch (blockManager.getCurentLayoutType()) {
+                switch (blockContext.getCurentLayoutType()) {
                     case LAYOUT_TYPE_GRID:
                         layoutParams = new GridLayoutManager.LayoutParams(LayoutParams.MATCH_PARENT, heightSize);
                         break;
                     case LAYOUT_TYPE_STAGGER:
                         //stagger模式设定高度之后里面的margin会造成内容的压缩，所以这里加上会被压缩的高度
                         if (heightSize != ViewGroup.LayoutParams.WRAP_CONTENT) {
-                            heightSize += blockManager.getSize(block.getMarginTop());
-                            heightSize += blockManager.getSize(block.getMarginBottom());
+                            heightSize += BlockConfig.getInstance().getSize(block.getMarginTop());
+                            heightSize += BlockConfig.getInstance().getSize(block.getMarginBottom());
                         }
                         layoutParams = new StaggeredGridLayoutManager.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, heightSize);
                         if (block.getColSpan() == 0) {
@@ -219,18 +213,40 @@ public class BlockView extends RecyclerView {
         public int getItemCount() {
             return data.size();
         }
-
-        @Override
-        public void replace(final int position, Block container) {
-            data.remove(position);
-            data.add(position, container);
-            new Handler().post(new Runnable() {
-                @Override
-                public void run() {
-                    notifyItemChanged(position);
-                }
-            });
-        }
     }
+
+    public interface OnBlockClickListener {
+        boolean isClickable(Block block);
+
+        void onBlockClick(Block block);
+    }
+
+    public OnBlockClickListener getOnBlockClickListener() {
+        return blockContext.getOnBlockClickListener();
+    }
+
+    public void setOnBlockClickListener(OnBlockClickListener onBlockClickListener) {
+        blockContext.setOnBlockClickListener(onBlockClickListener);
+    }
+
+    /**
+     * 这个模块是否可以点击
+     * 先判断的clickable是否为true
+     * 如果clickable为true，再调用这个方法进一步自定义是否可以点击。
+     * 最后检查对应的view的clickable属性是否为true
+     */
+    public interface BlockClickInterceptor {
+        boolean isClickable(Block block);
+    }
+
+
+    public BlockClickInterceptor getBlockClickInterceptor() {
+        return blockContext.getBlockClickInterceptor();
+    }
+
+    public void setBlockClickInterceptor(BlockClickInterceptor blockClickInterceptor) {
+        blockContext.setBlockClickInterceptor(blockClickInterceptor);
+    }
+
 
 }

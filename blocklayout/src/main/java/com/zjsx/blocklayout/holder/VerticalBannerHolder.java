@@ -4,15 +4,14 @@ import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.zjsx.blocklayout.config.BlockManager;
+import com.zjsx.blocklayout.config.BlockConfig;
+import com.zjsx.blocklayout.config.BlockContext;
 import com.zjsx.blocklayout.module.Block;
 import com.zjsx.blocklayout.module.VerticalBanner;
 import com.zjsx.blocklayout.widget.banner.VerticalViewPager;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 public class VerticalBannerHolder extends BlockHolder<VerticalBanner> {
@@ -20,8 +19,8 @@ public class VerticalBannerHolder extends BlockHolder<VerticalBanner> {
     BannerAdapter adapter;
     final List<Block> mDatas = new ArrayList<>();
 
-    public VerticalBannerHolder(BlockManager config, ViewGroup parent) {
-        super(config, new VerticalViewPager(parent.getContext()), config.getViewType(VerticalBanner.class));
+    public VerticalBannerHolder(BlockContext blockContext, ViewGroup parent) {
+        super(blockContext, new VerticalViewPager(parent.getContext()), BlockConfig.getInstance().getViewType(VerticalBanner.class));
         bannerView = (VerticalViewPager) itemView;
         adapter = new BannerAdapter();
         bannerView.setAdapter(adapter);
@@ -58,7 +57,7 @@ public class VerticalBannerHolder extends BlockHolder<VerticalBanner> {
             Block item = mDatas.get(position % mDatas.size());
             BlockHolder itemHolder = getRecylerViewHolder(item.getClass());
             if (itemHolder == null) {
-                itemHolder = item.getHolder(config, bannerView);
+                itemHolder = item.getHolder(blockContext, bannerView);
                 itemHolder.setItemLayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             }
             itemHolder.bind(item);

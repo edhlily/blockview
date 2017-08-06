@@ -4,9 +4,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
+import com.zjsx.blocklayout.config.BlockConfig;
+import com.zjsx.blocklayout.config.BlockContext;
 import com.zjsx.blocklayout.module.Block;
 import com.zjsx.blocklayout.module.GalleryContainer;
-import com.zjsx.blocklayout.config.BlockManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +18,8 @@ public class GalleryHolder extends BlockHolder<GalleryContainer> {
     final List<Block> mDatas = new ArrayList<>();
     GalleryAdapter mAdapter;
 
-    public GalleryHolder(BlockManager config, ViewGroup parent) {
-        super(config, new RecyclerView(parent.getContext()),config.getViewType(GalleryContainer.class));
+    public GalleryHolder(BlockContext blockContext, ViewGroup parent) {
+        super(blockContext, new RecyclerView(parent.getContext()), BlockConfig.getInstance().getViewType(GalleryContainer.class));
         horizontalRecyclerView = (RecyclerView) itemView;
         horizontalRecyclerView.setFocusable(false);
         mLinearLayoutManager = new LinearLayoutManager(parent.getContext(), LinearLayoutManager.HORIZONTAL, false);
@@ -38,20 +39,20 @@ public class GalleryHolder extends BlockHolder<GalleryContainer> {
 
         @Override
         public int getItemViewType(int position) {
-            return config.getViewType(mDatas.get(position));
+            return BlockConfig.getInstance().getViewType(mDatas.get(position));
         }
 
         @Override
         public BlockHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            BlockHolder blockHolder = config.getHolder(parent, viewType);
+            BlockHolder blockHolder = blockContext.getHolder(parent, viewType);
             blockHolder.setItemLayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
             return blockHolder;
         }
 
         @Override
         public void onBindViewHolder(BlockHolder holder, int position) {
-            int width = config.getSize(mDatas.get(position).getWidth());
-            holder.setItemLayoutParams(width,ViewGroup.MarginLayoutParams.MATCH_PARENT);
+            int width = BlockConfig.getInstance().getSize(mDatas.get(position).getWidth());
+            holder.setItemLayoutParams(width, ViewGroup.MarginLayoutParams.MATCH_PARENT);
             holder.bind(mDatas.get(position));
         }
 

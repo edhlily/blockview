@@ -21,15 +21,24 @@ public class MainActivityFragmentBar extends RecyclerView.OnScrollListener {
     RoundEditText etSearch;
     ImageView ivScan, ivLogin;
 
+    //这里用来演示是否显示appBar
+    boolean showAppBar = false;
+
     public MainActivityFragmentBar(MainActivityFragment mainFragment) {
         this.mainFragment = mainFragment;
         indexActionBar = (RelativeLayout) mainFragment.getActivity().findViewById(R.id.titleBar);
+
+        indexActionBar.setVisibility(showAppBar?View.VISIBLE:View.GONE);
+
+        appBarShadow = mainFragment.getActivity().findViewById(R.id.appBarShadow);
+
+        appBarShadow.setVisibility(showAppBar?View.VISIBLE:View.GONE);
+
         viewTop = mainFragment.getActivity().findViewById(R.id.viewTop);
         etSearch = (RoundEditText) mainFragment.getActivity().findViewById(R.id.etSearch);
         etSearch.setFocusable(false);
         llBarLeft = mainFragment.getActivity().findViewById(R.id.llBarLeft);
         llBarRight = mainFragment.getActivity().findViewById(R.id.llBarRight);
-        appBarShadow = mainFragment.getActivity().findViewById(R.id.appBarShadow);
         ivScan = (ImageView) mainFragment.getActivity().findViewById(R.id.ivBarLeftBtn);
         ivLogin = (ImageView) mainFragment.getActivity().findViewById(R.id.ivBarRightBtn);
         etSearch.setOnClickListener(mClickListener);
@@ -40,7 +49,7 @@ public class MainActivityFragmentBar extends RecyclerView.OnScrollListener {
         searchDrawableGray = ResourcesCompat.getDrawable(mainFragment.getResources(), R.mipmap.icon_search_2, null);
         searchDrawableGray.setBounds(0, 0, searchDrawableGray.getMinimumWidth(), searchDrawableGray.getMinimumHeight());
         offsetBound = BlockUtil.dip2px(mainFragment.getActivity(), 100);
-        etSearch.setText("数码产品5折特卖");
+        etSearch.setText("点我查看基本演示");
     }
 
     void setBar() {
@@ -86,6 +95,7 @@ public class MainActivityFragmentBar extends RecyclerView.OnScrollListener {
     }
 
     void setAppBarShadow() {
+        if(!showAppBar)return;
         if (offsetPercent >= 0.5f && appBarShadow.getVisibility() != View.VISIBLE) {
             appBarShadow.setVisibility(View.VISIBLE);
         } else if (offsetPercent < 0.5f && appBarShadow.getVisibility() != View.GONE) {
@@ -135,13 +145,11 @@ public class MainActivityFragmentBar extends RecyclerView.OnScrollListener {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.etSearch:
-                    Toast.makeText(mainFragment.getActivity(), "搜索", Toast.LENGTH_SHORT).show();
+
                     break;
                 case R.id.llBarLeft:
-                    mainFragment.loadJinDong();
                     break;
                 case R.id.llBarRight:
-                    mainFragment.loadTaoBao();
                     break;
             }
         }

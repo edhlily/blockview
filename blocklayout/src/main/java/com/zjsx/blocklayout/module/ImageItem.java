@@ -2,7 +2,7 @@ package com.zjsx.blocklayout.module;
 
 import android.view.ViewGroup;
 
-import com.zjsx.blocklayout.config.BlockManager;
+import com.zjsx.blocklayout.config.BlockContext;
 import com.zjsx.blocklayout.holder.ImageHolder;
 
 public class ImageItem extends Block<ImageItem> {
@@ -26,7 +26,7 @@ public class ImageItem extends Block<ImageItem> {
     }
 
     @Override
-    public ImageHolder newHolder(BlockManager config, ViewGroup parent) {
+    public ImageHolder newHolder(BlockContext config, ViewGroup parent) {
         return new ImageHolder(config, parent);
     }
 }

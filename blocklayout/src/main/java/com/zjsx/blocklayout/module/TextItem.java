@@ -2,7 +2,7 @@ package com.zjsx.blocklayout.module;
 
 import android.view.ViewGroup;
 
-import com.zjsx.blocklayout.config.BlockManager;
+import com.zjsx.blocklayout.config.BlockContext;
 import com.zjsx.blocklayout.holder.TextHolder;
 
 public class TextItem extends Block<TextItem> {
@@ -62,7 +62,7 @@ public class TextItem extends Block<TextItem> {
     }
 
     @Override
-    protected TextHolder newHolder(BlockManager config, ViewGroup parent) {
+    protected TextHolder newHolder(BlockContext config, ViewGroup parent) {
         return new TextHolder(config, parent);
     }
 }

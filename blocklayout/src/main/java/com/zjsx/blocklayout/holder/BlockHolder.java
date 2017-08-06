@@ -7,7 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.blocklayout.R;
-import com.zjsx.blocklayout.config.BlockManager;
+import com.zjsx.blocklayout.config.BlockConfig;
+import com.zjsx.blocklayout.config.BlockContext;
 import com.zjsx.blocklayout.module.Block;
 import com.zjsx.blocklayout.tools.BlockUtil;
 import com.zjsx.blocklayout.widget.roundview.RoundLinearLayout;
@@ -19,7 +20,7 @@ import java.util.Map;
 
 public abstract class BlockHolder<T extends Block> extends RecyclerView.ViewHolder {
     private String mImagePath;
-    protected BlockManager config;
+    protected BlockContext blockContext;
     private int blockType;
 
     private Map<Integer, List<BlockHolder>> recycledViewPool = new HashMap<>();
@@ -32,7 +33,7 @@ public abstract class BlockHolder<T extends Block> extends RecyclerView.ViewHold
     }
 
     public BlockHolder getRecylerViewHolder(Class<?> clazz) {
-        return getRecylerViewHolder(config.getViewType(clazz));
+        return getRecylerViewHolder(BlockConfig.getInstance().getViewType(clazz));
     }
 
     public BlockHolder getRecylerViewHolder(int viewType) {
@@ -47,7 +48,7 @@ public abstract class BlockHolder<T extends Block> extends RecyclerView.ViewHold
     public BlockHolder<T> getHolder(Block<?> item, ViewGroup parent) {
         BlockHolder blockHolder = getRecylerViewHolder(item.getClass());
         if (blockHolder == null) {
-            blockHolder = item.getHolder(config, parent);
+            blockHolder = item.getHolder(blockContext, parent);
         }
         return blockHolder;
     }
@@ -60,10 +61,10 @@ public abstract class BlockHolder<T extends Block> extends RecyclerView.ViewHold
         this.blockType = blockType;
     }
 
-    public BlockHolder(final BlockManager config, final View itemView, int blockType) {
+    public BlockHolder(final BlockContext blockContext, final View itemView, int blockType) {
         super(itemView);
         this.itemView.setTag(R.id.rootHolder, this);
-        this.config = config;
+        this.blockContext = blockContext;
         this.blockType = blockType;
 
         if (itemView instanceof ViewGroup) {
@@ -106,23 +107,11 @@ public abstract class BlockHolder<T extends Block> extends RecyclerView.ViewHold
         //判断当前view绑定的对象是否和将要绑定的对象一样
         if (!block.equals(this.block)) {
             this.block = block;
-            setPadding(block);
-            setMargin(block);
-            setRound(block);
-            setBackgroud(block);
-
-            if (block.isClickable() && config.isClickable(block)) {
-                itemView.setClickable(true);
-                itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        config.onItemClick(block);
-                    }
-                });
-            } else {
-                itemView.setOnClickListener(null);
-                itemView.setClickable(false);
-            }
+            setPadding();
+            setMargin();
+            setRound();
+            setBackgroud();
+            setClick();
         }
 
         bindData(block);
@@ -130,35 +119,62 @@ public abstract class BlockHolder<T extends Block> extends RecyclerView.ViewHold
 
     public abstract void bindData(final T block);
 
-    public void setPadding(Block block) {
-        itemView.setPadding(
-                config.getSize(block.getPaddingLeft()),
-                config.getSize(block.getPaddingTop()),
-                config.getSize(block.getPaddingRight()),
-                config.getSize(block.getPaddingBottom()));
+    public void setClick() {
+        boolean clickable = true;
+
+        if (!block.isClickable()) {
+            clickable = false;
+        }
+
+        if (blockContext.getBlockClickInterceptor() != null && !blockContext.getBlockClickInterceptor().isClickable(block)) {
+            clickable = false;
+        }
+
+        if (clickable) {
+            itemView.setClickable(true);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (blockContext.getOnBlockClickListener() != null) {
+                        blockContext.getOnBlockClickListener().onBlockClick(block);
+                    }
+                }
+            });
+        } else {
+            itemView.setOnClickListener(null);
+            itemView.setClickable(false);
+        }
     }
 
-    public void setMargin(Block block) {
+    public void setPadding() {
+        itemView.setPadding(
+                BlockConfig.getInstance().getSize(block.getPaddingLeft()),
+                BlockConfig.getInstance().getSize(block.getPaddingTop()),
+                BlockConfig.getInstance().getSize(block.getPaddingRight()),
+                BlockConfig.getInstance().getSize(block.getPaddingBottom()));
+    }
+
+    public void setMargin() {
         if (itemView.getLayoutParams() != null && itemView.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
             ((ViewGroup.MarginLayoutParams) itemView.getLayoutParams()).setMargins(
-                    config.getSize(block.getMarginLeft()),
-                    config.getSize(block.getMarginTop()),
-                    config.getSize(block.getMarginRight()),
-                    config.getSize(block.getMarginBottom()));
+                    BlockConfig.getInstance().getSize(block.getMarginLeft()),
+                    BlockConfig.getInstance().getSize(block.getMarginTop()),
+                    BlockConfig.getInstance().getSize(block.getMarginRight()),
+                    BlockConfig.getInstance().getSize(block.getMarginBottom()));
         }
     }
 
-    public void setRound(Block block) {
+    public void setRound() {
         if (itemView instanceof RoundLinearLayout) {
             ((RoundLinearLayout) itemView).getDelegate().setBackgroundColor(Color.WHITE);
-            ((RoundLinearLayout) itemView).getDelegate().setCornerRadius_TL(config.getSize(block.getRoundTopLeft()));
-            ((RoundLinearLayout) itemView).getDelegate().setCornerRadius_TR(config.getSize(block.getRoundTopRight()));
-            ((RoundLinearLayout) itemView).getDelegate().setCornerRadius_BL(config.getSize(block.getRoundBottomLeft()));
-            ((RoundLinearLayout) itemView).getDelegate().setCornerRadius_BR(config.getSize(block.getRoundBottomRight()));
+            ((RoundLinearLayout) itemView).getDelegate().setCornerRadius_TL(BlockConfig.getInstance().getSize(block.getRoundTopLeft()));
+            ((RoundLinearLayout) itemView).getDelegate().setCornerRadius_TR(BlockConfig.getInstance().getSize(block.getRoundTopRight()));
+            ((RoundLinearLayout) itemView).getDelegate().setCornerRadius_BL(BlockConfig.getInstance().getSize(block.getRoundBottomLeft()));
+            ((RoundLinearLayout) itemView).getDelegate().setCornerRadius_BR(BlockConfig.getInstance().getSize(block.getRoundBottomRight()));
         }
     }
 
-    private void setBackgroud(Block block) {
+    private void setBackgroud() {
         if (!BlockUtil.isEmpty(block.getBackImage())) {
             setBackgroundImage(block.getBackImage());
         } else if (!BlockUtil.isEmpty(block.getBackColor())) {
@@ -177,11 +193,16 @@ public abstract class BlockHolder<T extends Block> extends RecyclerView.ViewHold
     public void setBackgroundImage(String imagePath) {
         if (imagePath != null && !imagePath.equals(mImagePath)) {
             mImagePath = imagePath;
-            config.setBackgroundImage(itemView, imagePath, Color.TRANSPARENT);
+
+            if (BlockConfig.getInstance().getImageLoader() == null) {
+                throw new RuntimeException("image loader not found!");
+            }
+
+            BlockConfig.getInstance().getImageLoader().setBackgroundImage(itemView, imagePath);
         }
     }
 
     public void setBackgroundColor(View target, String color) {
-        target.setBackgroundColor(BlockManager.getBackColor(color));
+        target.setBackgroundColor(BlockConfig.getInstance().getBackColor(color));
     }
 }

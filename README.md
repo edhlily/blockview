@@ -100,7 +100,7 @@ public abstract class BlockManager {
 设置
 
 ```
-blockView.setBlockManager(blockManager);
+blockView.setBlockManager(blockContext);
 ```
 
 
@@ -193,7 +193,7 @@ public interface BlockConfig {
 
 ```
 //加载布局配置文件
-blockView.setConfig(config);
+blockView.setConfig(blockContext);
 ```
 
 这时候布局就会被加载出来了，那么核心是布局文件是如何定义的呢？下面是一个示例：

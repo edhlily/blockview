@@ -6,32 +6,33 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
-import com.zjsx.blocklayout.config.BlockManager;
 import com.zjsx.blocklayout.config.BlockConfig;
+import com.zjsx.blocklayout.config.BlockContext;
+import com.zjsx.blocklayout.config.BlockDataConfig;
 
-import static com.zjsx.blocklayout.config.BlockConfig.LAYOUT_TYPE_STAGGER;
-import static com.zjsx.blocklayout.config.BlockConfig.SPACING_ITEM_DECENTRALIZED;
-import static com.zjsx.blocklayout.config.BlockConfig.SPACING_MODE_AROUND;
+import static com.zjsx.blocklayout.config.BlockDataConfig.LAYOUT_TYPE_STAGGER;
+import static com.zjsx.blocklayout.config.BlockDataConfig.SPACING_ITEM_DECENTRALIZED;
+import static com.zjsx.blocklayout.config.BlockDataConfig.SPACING_MODE_AROUND;
 
 class BlockItemDecoration extends RecyclerView.ItemDecoration {
-    BlockManager manager;
-    BlockConfig config;
+    BlockContext blockContext;
+    BlockDataConfig config;
     int spanCount;
     int spacingMode;
     int spacingSize;
 
-    public BlockItemDecoration(BlockManager manager, BlockConfig config) {
-        this.manager = manager;
+    public BlockItemDecoration(BlockContext blockContext, BlockDataConfig config) {
+        this.blockContext = blockContext;
         this.config = config;
         spanCount = config.getCellCount();
         spanCount = spanCount > 0 ? spanCount : 1;
-        spacingMode = manager.getSpacingMode(config.getSpacingMode());
-        spacingSize = manager.getSize(config.getSpacing());
-        if (manager.getCurentLayoutType() == LAYOUT_TYPE_STAGGER) {
+        spacingMode = BlockConfig.getInstance().getSpacingMode(config.getSpacingMode());
+        spacingSize = BlockConfig.getInstance().getSize(config.getSpacing());
+        if (blockContext.getCurentLayoutType() == LAYOUT_TYPE_STAGGER) {
             //stagger模式下，如果下面的散列item没有设置高度，并且spacing过小的话会导致下面的散列item变成一列
             //所以这里设置一个最小值
-            if (manager.getSize(config.getSpacing()) < 0) {
-                spacingSize = manager.getSize("5dp");
+            if (BlockConfig.getInstance().getSize(config.getSpacing()) < 0) {
+                spacingSize = BlockConfig.getInstance().getSize("5dp");
             }
         }
     }
@@ -43,7 +44,7 @@ class BlockItemDecoration extends RecyclerView.ItemDecoration {
 
         int position = parent.getChildAdapterPosition(view);
 
-        if (manager.getSpacingItem(config.getSpacingItem()) == SPACING_ITEM_DECENTRALIZED) {
+        if (BlockConfig.getInstance().getSpacingItem(config.getSpacingItem()) == SPACING_ITEM_DECENTRALIZED) {
 
             //占满所有横向cell的item不通过这里设置，间隔，通过手动设置margin的方式
             if (parent.getLayoutManager() instanceof GridLayoutManager) {

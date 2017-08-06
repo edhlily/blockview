@@ -2,7 +2,7 @@ package com.zjsx.blocklayout.module;
 
 import android.view.ViewGroup;
 
-import com.zjsx.blocklayout.config.BlockManager;
+import com.zjsx.blocklayout.config.BlockContext;
 import com.zjsx.blocklayout.holder.LinearHolder;
 
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ public class Linear extends Block<Linear> {
     }
 
     @Override
-    protected LinearHolder newHolder(BlockManager config, ViewGroup parent) {
+    protected LinearHolder newHolder(BlockContext config, ViewGroup parent) {
         return new LinearHolder(config, parent);
     }
 }

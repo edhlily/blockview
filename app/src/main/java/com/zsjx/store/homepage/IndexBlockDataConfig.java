@@ -1,10 +1,10 @@
 package com.zsjx.store.homepage;
 
-import com.zjsx.blocklayout.config.DefaultBlockConfig;
+import com.zjsx.blocklayout.config.DefaultBlockDataConfig;
 
 import java.io.Serializable;
 
-public class IndexBlockConfig extends DefaultBlockConfig implements Serializable {
+public class IndexBlockDataConfig extends DefaultBlockDataConfig implements Serializable {
     private String version;
     private String nextPage;
 
@@ -26,9 +26,9 @@ public class IndexBlockConfig extends DefaultBlockConfig implements Serializable
 
     @Override
     public boolean equals(Object o) {
-        if (o instanceof IndexBlockConfig) {
+        if (o instanceof IndexBlockDataConfig) {
             if (version != null) {
-                return version.equals(((IndexBlockConfig) o).getVersion());
+                return version.equals(((IndexBlockDataConfig) o).getVersion());
             }
         }
         return super.equals(o);
@@ -36,7 +36,7 @@ public class IndexBlockConfig extends DefaultBlockConfig implements Serializable
 
     @Override
     public String toString() {
-        return "IndexBlockConfig{" +
+        return "IndexBlockDataConfig{" +
                 "version='" + version + '\'' +
                 ", nextPage='" + nextPage + '\'' +
                 '}';

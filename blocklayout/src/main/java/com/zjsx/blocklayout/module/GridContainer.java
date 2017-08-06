@@ -2,7 +2,7 @@ package com.zjsx.blocklayout.module;
 
 import android.view.ViewGroup;
 
-import com.zjsx.blocklayout.config.BlockManager;
+import com.zjsx.blocklayout.config.BlockContext;
 import com.zjsx.blocklayout.holder.BlockHolder;
 import com.zjsx.blocklayout.holder.GridHolder;
 
@@ -56,7 +56,7 @@ public class GridContainer extends Block<GridContainer> {
     }
 
     @Override
-    protected BlockHolder<GridContainer> newHolder(BlockManager config, ViewGroup parent) {
+    protected BlockHolder<GridContainer> newHolder(BlockContext config, ViewGroup parent) {
         return new GridHolder(config, parent);
     }
 }

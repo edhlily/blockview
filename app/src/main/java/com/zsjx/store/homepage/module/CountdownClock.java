@@ -2,7 +2,7 @@ package com.zsjx.store.homepage.module;
 
 import android.view.ViewGroup;
 
-import com.zjsx.blocklayout.config.BlockManager;
+import com.zjsx.blocklayout.config.BlockContext;
 import com.zsjx.store.homepage.holder.CountdownClockHolder;
 import com.zjsx.blocklayout.module.Block;
 import com.zsjx.store.homepage.tools.TimeUtil;
@@ -61,7 +61,7 @@ public class CountdownClock extends Block<CountdownClock> {
     }
 
     @Override
-    public CountdownClockHolder newHolder(BlockManager config, ViewGroup parent) {
+    public CountdownClockHolder newHolder(BlockContext config, ViewGroup parent) {
         return new CountdownClockHolder(config, parent);
     }
 }

@@ -2,7 +2,7 @@ package com.zjsx.blocklayout.module;
 
 import android.view.ViewGroup;
 
-import com.zjsx.blocklayout.config.BlockManager;
+import com.zjsx.blocklayout.config.BlockContext;
 import com.zjsx.blocklayout.holder.GalleryHolder;
 
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ public class GalleryContainer extends Block<GalleryContainer> {
     }
 
     @Override
-    protected GalleryHolder newHolder(BlockManager config, ViewGroup parent) {
+    protected GalleryHolder newHolder(BlockContext config, ViewGroup parent) {
         return new GalleryHolder(config, parent);
     }
 }

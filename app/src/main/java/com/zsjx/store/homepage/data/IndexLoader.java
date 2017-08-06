@@ -9,10 +9,10 @@ import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import com.zjsx.blocklayout.module.Block;
-import com.zjsx.blocklayout.config.BlockManager;
 import com.zjsx.blocklayout.config.BlockConfig;
-import com.zsjx.store.homepage.IndexBlockConfig;
+import com.zjsx.blocklayout.config.BlockContext;
+import com.zjsx.blocklayout.module.Block;
+import com.zsjx.store.homepage.IndexBlockDataConfig;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -35,7 +35,7 @@ public class IndexLoader {
                 System.out.println("======type:" + element.toString());
                 if (element != null && !element.isJsonNull() && element.isJsonPrimitive()) {
                     String type = element.getAsString();
-                    Class<? extends Block> tClass = mManager.getClass(type);
+                    Class<? extends Block> tClass = BlockConfig.getInstance().getClass(type);
                     if (tClass != null) {
                         item = typeGson.fromJson(json, tClass);
                     }
@@ -46,21 +46,19 @@ public class IndexLoader {
         }
     };
 
-    public IndexBlockConfig fromJson(String json) {
-        return typeGson.fromJson(json, IndexBlockConfig.class);
+    public IndexBlockDataConfig fromJson(String json) {
+        return typeGson.fromJson(json, IndexBlockDataConfig.class);
     }
 
     public Gson typeGson = new GsonBuilder().registerTypeAdapter(Block.class, jsonDeserializer).disableHtmlEscaping().create();
 
 
     Context mContext;
-    BlockManager mManager;
     String json;
     String mPath;
 
-    public IndexLoader(Context context, BlockManager manager,String path) {
+    public IndexLoader(Context context, String path) {
         mContext = context;
-        mManager = manager;
         mPath = path;
         reset();
     }
@@ -90,7 +88,7 @@ public class IndexLoader {
         this.json = json;
     }
 
-    public Observable<IndexBlockConfig> getIndexConfig(BlockManager manager) {
+    public Observable<IndexBlockDataConfig> getIndexConfig() {
         try {
             return Observable.just(fromJson(json));
         } catch (Exception e) {

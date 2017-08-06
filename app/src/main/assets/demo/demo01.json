@@ -1,0 +1,25 @@
+{
+  "layout": "grid",
+  "cellCount": 2,
+  "backColor": "#000000",
+  "debug": true,
+  "version": 1.0,
+  "modules": [
+    {
+      "type": "text",
+      "text": "DEMO",
+      "height": "wrap",
+      "width": "fill",
+      "textSize": "18sp",
+      "paddingTop": "10dp",
+      "paddingBottom": "10dp",
+      "paddingLeft": "0.1sw",
+      "paddingRight": "0.1sw",
+      "textColor": "#000000",
+      "textStyle": "bold",
+      "backColor": "#FF0000",
+      "gravity": "center",
+      "link": "demo"
+    }
+  ]
+}

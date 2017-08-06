@@ -2,7 +2,7 @@ package com.zjsx.blocklayout.module;
 
 import android.view.ViewGroup;
 
-import com.zjsx.blocklayout.config.BlockManager;
+import com.zjsx.blocklayout.config.BlockContext;
 import com.zjsx.blocklayout.holder.FrameHolder;
 
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ public class Frame extends Block<Frame> {
     }
 
     @Override
-    public FrameHolder newHolder(BlockManager config, ViewGroup parent) {
+    public FrameHolder newHolder(BlockContext config, ViewGroup parent) {
         return new FrameHolder(config,parent);
     }
 }

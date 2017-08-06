@@ -1,0 +1,133 @@
+{
+  "layout": "grid",
+  "cellCount": 2,
+  "backColor": "#000000",
+  "debug": true,
+  "version": 1.0,
+  "modules": [
+    {
+      "type": "table",
+      "colCount": "1",
+      "rowHeight": "0.2sw",
+      "spacing": "10dp",
+      "items": [
+        {
+          "type": "linear",
+          "orientation": "vertical",
+          "link": "window://demo?demoConfig=demo%2fdemo01.json",
+          "items": [
+            {
+              "type": "text",
+              "width": "fill",
+              "gravity": "center",
+              "textStyle": "bold",
+              "textSize": "20sp",
+              "paddingTop": "10dp",
+              "paddingBottom": "10dp",
+              "text": "demo01"
+            },
+            {
+              "type": "text",
+              "width": "fill",
+              "gravity": "center",
+              "textStyle": "bold",
+              "textSize": "12sp",
+              "textColor": "#0000FF",
+              "text": "点击查看使用text的演示"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "gravity": "center",
+          "textStyle": "bold",
+          "textSize": "20sp",
+          "backColor": "#FFFFFF",
+          "text": "demo02",
+          "link": "window://demo?demoConfig=demo%2fdemo02.json"
+        },
+        {
+          "type": "text",
+          "gravity": "center",
+          "textStyle": "bold",
+          "textSize": "20sp",
+          "backColor": "#FFFFFF",
+          "text": "demo03",
+          "link": "window://demo?demoConfig=demo%2fdemo03.json"
+        },
+        {
+          "type": "text",
+          "gravity": "center",
+          "textStyle": "bold",
+          "textSize": "20sp",
+          "backColor": "#FFFFFF",
+          "text": "demo04",
+          "link": "window://demo?demoConfig=demo%2fdemo04.json"
+        },
+        {
+          "type": "text",
+          "gravity": "center",
+          "textStyle": "bold",
+          "textSize": "20sp",
+          "backColor": "#FFFFFF",
+          "text": "demo05",
+          "link": "window://demo?demoConfig=demo%2fdemo05.json"
+        },
+        {
+          "type": "text",
+          "gravity": "center",
+          "textStyle": "bold",
+          "textSize": "20sp",
+          "backColor": "#FFFFFF",
+          "text": "demo06",
+          "link": "window://demo?demoConfig=demo%2fdemo06.json"
+        },
+        {
+          "type": "text",
+          "gravity": "center",
+          "textStyle": "bold",
+          "textSize": "20sp",
+          "backColor": "#FFFFFF",
+          "text": "demo07",
+          "link": "window://demo?demoConfig=demo%2fdemo07.json"
+        },
+        {
+          "type": "text",
+          "gravity": "center",
+          "textStyle": "bold",
+          "textSize": "20sp",
+          "backColor": "#FFFFFF",
+          "text": "demo08",
+          "link": "window://demo?demoConfig=demo%2fdemo08.json"
+        },
+        {
+          "type": "text",
+          "gravity": "center",
+          "textStyle": "bold",
+          "textSize": "20sp",
+          "backColor": "#FFFFFF",
+          "text": "demo09",
+          "link": "window://demo?demoConfig=demo%2fdemo09.json"
+        },
+        {
+          "type": "text",
+          "gravity": "center",
+          "textStyle": "bold",
+          "textSize": "20sp",
+          "backColor": "#FFFFFF",
+          "text": "demo10",
+          "link": "window://demo?demoConfig=demo%2fdemo10.json"
+        },
+        {
+          "type": "text",
+          "gravity": "center",
+          "textStyle": "bold",
+          "textSize": "20sp",
+          "backColor": "#FFFFFF",
+          "text": "demo11",
+          "link": "window://demo?demoConfig=demo%2fdemo11.json"
+        }
+      ]
+    }
+  ]
+}

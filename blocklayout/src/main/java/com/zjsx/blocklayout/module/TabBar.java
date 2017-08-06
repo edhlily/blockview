@@ -2,7 +2,7 @@ package com.zjsx.blocklayout.module;
 
 import android.view.ViewGroup;
 
-import com.zjsx.blocklayout.config.BlockManager;
+import com.zjsx.blocklayout.config.BlockContext;
 import com.zjsx.blocklayout.holder.TabsHolder;
 
 import java.util.ArrayList;
@@ -37,7 +37,7 @@ public class TabBar extends Block<TabBar> {
     }
 
     @Override
-    protected TabsHolder newHolder(BlockManager config, ViewGroup parent) {
+    protected TabsHolder newHolder(BlockContext config, ViewGroup parent) {
         return new TabsHolder(config, parent);
     }
 

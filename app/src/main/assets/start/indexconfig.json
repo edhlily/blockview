@@ -1,0 +1,76 @@
+{
+  "layout": "grid",
+  "cellCount": 2,
+  "backColor": "#000000",
+  "debug": true,
+  "version": 1.0,
+  "modules": [
+    {
+      "type": "grid",
+      "height": "wrap",
+      "rowHeight": "0.5bw",
+      "rowCount": 3,
+      "colCount": 2,
+      "spacing": "10dp",
+      "marginTop": "10dp",
+      "marginBottom": "10dp",
+      "marginLeft": "10dp",
+      "marginRight": "10dp",
+      "items": [
+        {
+          "type": "text",
+          "rowStart": 1,
+          "colStart": 1,
+          "rowSpan": 2,
+          "colSpan": 1,
+          "gravity": "center",
+          "textStyle": "bold",
+          "textSize": "20sp",
+          "backColor": "#FFFFFF",
+          "text": "demo演示",
+          "link": "window://demo?demoConfig=demo%2fstart.json"
+        },
+        {
+          "type": "text",
+          "rowStart": 1,
+          "colStart": 2,
+          "rowSpan": 1,
+          "colSpan": 1,
+          "gravity": "center",
+          "textStyle": "bold",
+          "textSize": "20sp",
+          "backColor": "#FFFFFF",
+          "text": "仿京东！",
+          "link": "window://demo?demoConfig=jd01%2findexconfig.json"
+        },
+        {
+          "type": "text",
+          "rowStart": 2,
+          "colStart": 2,
+          "rowSpan": 1,
+          "colSpan": 1,
+          "gravity": "center",
+          "textStyle": "bold",
+          "textSize": "20sp",
+          "backColor": "#FFFFFF",
+          "text": "仿淘宝！",
+          "link": "window://demo?demoConfig=taobao01%2findexconfig.json"
+        },
+        {
+          "type": "text",
+          "rowStart": 3,
+          "colStart": 1,
+          "rowSpan": 1,
+          "colSpan": 2,
+          "gravity": "center",
+          "textStyle": "bold",
+          "textSize": "20sp",
+          "backColor": "#00FF00",
+          "textColor": "#0000FF",
+          "text": "我的github地址",
+          "link": "http://github.com/zjsx"
+        }
+      ]
+    }
+  ]
+}

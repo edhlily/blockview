@@ -3,10 +3,9 @@ package com.zjsx.blocklayout.config;
 import com.zjsx.blocklayout.module.Block;
 import com.zjsx.blocklayout.tools.BlockUtil;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public class DefaultBlockConfig implements BlockConfig {
+public class DefaultBlockDataConfig implements BlockDataConfig {
     private String layout;
     private int cellCount;
     private String spacing;

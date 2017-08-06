@@ -1,0 +1,42 @@
+{
+  "layout": "grid",
+  "cellCount": 2,
+  "backColor": "#000000",
+  "debug": true,
+  "version": 1.0,
+  "modules": [
+    {
+      "type": "frame",
+      "link": "toast://long?message=这是条LongToast",
+      "items": [
+        {
+          "type": "image",
+          "width": "fill",
+          "scaleType": "fitCenter",
+          "backColor": "#FF0000",
+          "src": "assets/taobao01/images/taobao (13).gif"
+        },
+        {
+          "type": "text",
+          "text": "Frame测试",
+          "backColor": "#55000000",
+          "style": "bold",
+          "width": "fill",
+          "gravity": "center",
+          "textColor": "#FFFFFF",
+          "clickable": false,
+          "layoutGravity": "bottom"
+        },
+        {
+          "type": "image",
+          "src": "file:///android_asset/jd01/images/new.png",
+          "width": "0.15sw",
+          "height": "wrap",
+          "clickable": false,
+          "scaleType": "fitCenter",
+          "layoutGravity": "top|left"
+        }
+      ]
+    }
+  ]
+}

@@ -3,10 +3,10 @@ package com.zsjx.store.homepage.module;
 
 import android.view.ViewGroup;
 
+import com.zjsx.blocklayout.config.BlockContext;
 import com.zjsx.blocklayout.module.Block;
 import com.zsjx.store.homepage.R;
 import com.zsjx.store.homepage.app.StoreApp;
-import com.zjsx.blocklayout.config.BlockManager;
 import com.zsjx.store.homepage.holder.NextPageHolder;
 
 public class NextPageItem extends Block<NextPageItem> {
@@ -39,7 +39,7 @@ public class NextPageItem extends Block<NextPageItem> {
     }
 
     @Override
-    public NextPageHolder newHolder(BlockManager config, ViewGroup parent) {
+    public NextPageHolder newHolder(BlockContext config, ViewGroup parent) {
         return new NextPageHolder(config, parent);
     }
 

@@ -2,7 +2,7 @@ package com.zjsx.blocklayout.module;
 
 import android.view.ViewGroup;
 
-import com.zjsx.blocklayout.config.BlockManager;
+import com.zjsx.blocklayout.config.BlockContext;
 import com.zjsx.blocklayout.holder.BlockHolder;
 import com.zjsx.blocklayout.holder.TableHolder;
 
@@ -64,7 +64,7 @@ public class TableContainer extends Block<TableContainer> {
     }
 
     @Override
-    protected BlockHolder<TableContainer> newHolder(BlockManager config, ViewGroup parent) {
+    protected BlockHolder<TableContainer> newHolder(BlockContext config, ViewGroup parent) {
         return new TableHolder(config, parent);
     }
 }

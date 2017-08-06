@@ -1,4 +1,4 @@
-package com.zjsx.blocklayout.widget;
+package com.zsjx.store.homepage.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;

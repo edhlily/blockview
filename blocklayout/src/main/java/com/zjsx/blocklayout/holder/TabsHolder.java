@@ -9,7 +9,8 @@ import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import com.zjsx.blocklayout.config.BlockManager;
+import com.zjsx.blocklayout.config.BlockConfig;
+import com.zjsx.blocklayout.config.BlockContext;
 import com.zjsx.blocklayout.module.Block;
 import com.zjsx.blocklayout.module.TabBar;
 import com.zjsx.blocklayout.module.TabItem;
@@ -23,8 +24,8 @@ public class TabsHolder extends BlockHolder<TabBar> {
 
     ContainerReplacer containerReplacer;
 
-    public TabsHolder(BlockManager config, ViewGroup parent) {
-        super(config, new RadioGroup(parent.getContext()),config.getViewType(TabBar.class));
+    public TabsHolder(BlockContext blockContext, ViewGroup parent) {
+        super(blockContext, new RadioGroup(parent.getContext()), BlockConfig.getInstance().getViewType(TabBar.class));
         tabHead = (RadioGroup) itemView;
         tabHead.setOrientation(RadioGroup.HORIZONTAL);
     }
@@ -51,31 +52,31 @@ public class TabsHolder extends BlockHolder<TabBar> {
             final RadioButton rb = (RadioButton) tabHead.getChildAt(i);
             final TabItem tabItem = tabBar.getTabItems().get(i);
             if (rb.isChecked()) {
-                rb.setBackgroundColor(BlockManager.getBackColor(tabBar.getTabItems().get(i).getSelectedBackColor()));
+                rb.setBackgroundColor(BlockConfig.getInstance().getBackColor(tabBar.getTabItems().get(i).getSelectedBackColor()));
             } else {
-                rb.setBackgroundColor(BlockManager.getBackColor(tabBar.getTabItems().get(i).getBackColor()));
+                rb.setBackgroundColor(BlockConfig.getInstance().getBackColor(tabBar.getTabItems().get(i).getBackColor()));
             }
-            rb.setTextSize(TypedValue.COMPLEX_UNIT_PX,config.getSize(tabBar.getTabItems().get(i).getTextSize()));
-            BlockManager.setTextColor(rb, tabBar.getTabItems().get(i).getTextColor());
+            rb.setTextSize(TypedValue.COMPLEX_UNIT_PX, BlockConfig.getInstance().getSize(tabBar.getTabItems().get(i).getTextSize()));
+            BlockConfig.getInstance().setTextColor(rb, tabBar.getTabItems().get(i).getTextColor());
             rb.setText(tabItem.getText());
             rb.setTag(i);
             if (i == tabBar.getSelectedTab()) {
                 rb.setChecked(true);
-                rb.setBackgroundColor(BlockManager.getBackColor(tabItem.getSelectedBackColor()));
-                BlockManager.setTextColor(rb, tabItem.getSelectedTextColor());
+                rb.setBackgroundColor(BlockConfig.getInstance().getBackColor(tabItem.getSelectedBackColor()));
+                BlockConfig.getInstance().setTextColor(rb, tabItem.getSelectedTextColor());
             }
             rb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked) {
-                        buttonView.setBackgroundColor(BlockManager.getBackColor(tabItem.getSelectedBackColor()));
-                        BlockManager.setTextColor(buttonView, tabItem.getSelectedTextColor());
+                        buttonView.setBackgroundColor(BlockConfig.getInstance().getBackColor(tabItem.getSelectedBackColor()));
+                        BlockConfig.getInstance().setTextColor(buttonView, tabItem.getSelectedTextColor());
                         tabBar.setSelectedTab((int) buttonView.getTag());
                         tabBar.getTabItems().get(tabBar.getSelectedTab()).getItem().setName(tabBar.getName());
                         //containerReplacer.replace(position + 1, tabBar.getTabItems().get(tabBar.getSelectedTab()).getContainer());
                     } else {
-                        buttonView.setBackgroundColor(BlockManager.getBackColor(tabItem.getBackColor()));
-                        BlockManager.setTextColor(buttonView, tabItem.getTextColor());
+                        buttonView.setBackgroundColor(BlockConfig.getInstance().getBackColor(tabItem.getBackColor()));
+                        BlockConfig.getInstance().setTextColor(buttonView, tabItem.getTextColor());
                     }
 
                 }

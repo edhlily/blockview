@@ -1,0 +1,14 @@
+{
+  "layout": "grid",
+  "cellCount": 2,
+  "backColor": "#000000",
+  "debug": true,
+  "version": 1.0,
+  "modules": [
+    {
+      "type": "image",
+      "src": "file:///android_asset/jd01/images/720p_12.jpg",
+      "link": "梦之蓝"
+    }
+  ]
+}

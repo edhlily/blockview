@@ -1,5 +1,7 @@
 package com.zsjx.store.homepage;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -7,27 +9,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.zjsx.blocklayout.config.BlockManager;
+import com.zjsx.blocklayout.config.BlockContext;
 import com.zjsx.blocklayout.module.Block;
-import com.zjsx.blocklayout.config.BlockConfig;
+import com.zjsx.blocklayout.tools.BlockUtil;
 import com.zjsx.blocklayout.widget.BlockView;
 import com.zsjx.store.homepage.data.IndexLoader;
 import com.zsjx.store.homepage.lib.tools.DToast;
 import com.zsjx.store.homepage.lib.tools.Logger;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 
-import rx.Observable;
 import rx.Subscriber;
-import rx.functions.Func1;
 
-public class MainActivityFragment extends Fragment {
+public class MainActivityFragment extends Fragment implements BlockView.BlockClickInterceptor, BlockView.OnBlockClickListener {
 
     BlockView blockView;
     MainActivityFragmentBar mainFragmentBar;
-    BlockManager blockManager;
     IndexLoader indexLoader;
 
     boolean isLoadingNewIndex;
@@ -44,20 +43,27 @@ public class MainActivityFragment extends Fragment {
         mainFragmentBar = new MainActivityFragmentBar(this);
         mainFragmentBar.setBar();
         initView();
-        loadTaoBao();
+
+        String demoConfig = getActivity().getIntent().getStringExtra("demoConfig");
+
+        if (demoConfig == null) {
+            demoConfig = "start%2findexconfig.json";
+        }
+
+        load(demoConfig);
     }
 
     void initView() {
 
         blockView = (BlockView) getActivity().findViewById(R.id.rvMain);
-        blockManager = new IndexManager(getActivity());
-        blockView.setBlockManager(blockManager);
+        blockView.setOnBlockClickListener(this);
+        blockView.setBlockClickInterceptor(this);
         blockView.addOnScrollListener(mainFragmentBar);
     }
 
     void loadNewIndex() {
         indexLoader
-                .getIndexConfig(blockManager)
+                .getIndexConfig()
                 .subscribe(new NewIndexSubscriber());
     }
 
@@ -65,7 +71,7 @@ public class MainActivityFragment extends Fragment {
     /**
      * 最新首页数据的订阅者
      */
-    class NewIndexSubscriber extends Subscriber<IndexBlockConfig> {
+    class NewIndexSubscriber extends Subscriber<IndexBlockDataConfig> {
 
         @Override
         public void onCompleted() {
@@ -84,7 +90,7 @@ public class MainActivityFragment extends Fragment {
         }
 
         @Override
-        public void onNext(IndexBlockConfig config) {
+        public void onNext(IndexBlockDataConfig config) {
             Logger.d("indexConfig:" + config);
 
             //加载布局文件
@@ -92,15 +98,50 @@ public class MainActivityFragment extends Fragment {
         }
     }
 
-    public void loadJinDong() {
-        indexLoader = new IndexLoader(getActivity(), blockManager, "jd01/indexconfig.json");
-        loadNewIndex();
-
+    public void load(String demoConfig) {
+        try {
+            demoConfig = URLDecoder.decode(demoConfig, "UTF-8");
+            indexLoader = new IndexLoader(getActivity(), demoConfig);
+            loadNewIndex();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void loadTaoBao() {
-        indexLoader = new IndexLoader(getActivity(), blockManager, "taobao01/indexconfig.json");
-        loadNewIndex();
+    @Override
+    public boolean isClickable(Block block) {
+        //link不为空才可以点击
+        return !BlockUtil.isEmpty(block.getLink());
     }
 
+    @Override
+    public void onBlockClick(Block block) {
+        String link = block.getLink();
+
+        Uri uri = Uri.parse(link);
+
+        if (uri == null) return;
+
+        if (uri.getScheme().equalsIgnoreCase("window")) {
+            if (uri.getHost().equalsIgnoreCase("demo")) {
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+
+                for (String paraName : uri.getQueryParameterNames()) {
+                    intent.putExtra(paraName, uri.getQueryParameter(paraName));
+                }
+
+                startActivity(intent);
+            }
+        } else if (uri.getScheme().startsWith("http")) {
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
+        } else if (uri.getScheme().equalsIgnoreCase("toast")) {
+            if (uri.getHost() == null) return;
+            if (uri.getHost().equalsIgnoreCase("short")) {
+                DToast.showShort(uri.getQueryParameter("message"));
+            } else {
+                DToast.showLong(uri.getQueryParameter("message"));
+            }
+        }
+    }
 }

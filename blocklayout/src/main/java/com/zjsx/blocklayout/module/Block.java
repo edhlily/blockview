@@ -3,10 +3,11 @@ package com.zjsx.blocklayout.module;
 import android.view.ViewGroup;
 import android.widget.GridLayout;
 
-import com.zjsx.blocklayout.config.BlockManager;
+import com.zjsx.blocklayout.config.BlockContext;
 import com.zjsx.blocklayout.holder.BlockHolder;
 
 import java.io.Serializable;
+import java.util.Map;
 import java.util.UUID;
 
 public abstract class Block<T extends Block<T>> implements Serializable {
@@ -39,6 +40,7 @@ public abstract class Block<T extends Block<T>> implements Serializable {
     private int itemWidth;
     private int itemHeight;
     private String layoutGravity;
+    private Map<String,Object> extra;
 
     public String getLayoutGravity() {
         return layoutGravity;
@@ -288,6 +290,14 @@ public abstract class Block<T extends Block<T>> implements Serializable {
         this.clickable = clickable;
     }
 
+    public Map<String, Object> getExtra() {
+        return extra;
+    }
+
+    public void setExtra(Map<String, Object> extra) {
+        this.extra = extra;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -304,9 +314,17 @@ public abstract class Block<T extends Block<T>> implements Serializable {
         return uuid.hashCode();
     }
 
-    public final <S extends BlockHolder<T>> S getHolder(BlockManager config, ViewGroup parent) {
+    /**
+     * 通过block创建该blockType对应的Holder
+     *
+     * @param config
+     * @param parent
+     * @param <S>
+     * @return
+     */
+    public final <S extends BlockHolder<T>> S getHolder(BlockContext config, ViewGroup parent) {
         return newHolder(config, parent);
     }
 
-    protected abstract <S extends BlockHolder<T>> S newHolder(BlockManager config, ViewGroup parent);
+    protected abstract <S extends BlockHolder<T>> S newHolder(BlockContext config, ViewGroup parent);
 }
