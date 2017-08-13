@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.example.blocklayout.R;
 import com.zjsx.blocklayout.config.BlockConfig;
 import com.zjsx.blocklayout.config.BlockContext;
+import com.zjsx.blocklayout.config.ChildManualRecycle;
 import com.zjsx.blocklayout.module.Block;
 import com.zjsx.blocklayout.tools.BlockUtil;
 import com.zjsx.blocklayout.widget.roundview.RoundLinearLayout;
@@ -61,13 +62,14 @@ public abstract class BlockHolder<T extends Block> extends RecyclerView.ViewHold
         this.blockType = blockType;
     }
 
+
     public BlockHolder(final BlockContext blockContext, final View itemView, int blockType) {
         super(itemView);
         this.itemView.setTag(R.id.rootHolder, this);
         this.blockContext = blockContext;
         this.blockType = blockType;
 
-        if (itemView instanceof ViewGroup) {
+        if (this instanceof ChildManualRecycle) {
             ((ViewGroup) itemView).setOnHierarchyChangeListener(new ViewGroup.OnHierarchyChangeListener() {
                 @Override
                 public void onChildViewAdded(View parent, View child) {
@@ -135,6 +137,7 @@ public abstract class BlockHolder<T extends Block> extends RecyclerView.ViewHold
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Log.d("++++++++++", "onClick() called with: v = [" + v.getClass().getName() + "]");
                     if (blockContext.getOnBlockClickListener() != null) {
                         blockContext.getOnBlockClickListener().onBlockClick(block);
                     }

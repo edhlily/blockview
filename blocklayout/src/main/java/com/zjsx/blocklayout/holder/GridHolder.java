@@ -4,13 +4,14 @@ import android.view.ViewGroup;
 
 import com.zjsx.blocklayout.config.BlockConfig;
 import com.zjsx.blocklayout.config.BlockContext;
+import com.zjsx.blocklayout.config.ChildManualRecycle;
 import com.zjsx.blocklayout.module.Block;
 import com.zjsx.blocklayout.module.GridContainer;
 import com.zjsx.blocklayout.parser.BWParser;
 import com.zjsx.blocklayout.tools.BlockUtil;
 import com.zjsx.blocklayout.widget.DolphinGridLayout;
 
-public class GridHolder extends BlockHolder<GridContainer> {
+public class GridHolder extends BlockHolder<GridContainer> implements ChildManualRecycle {
     private DolphinGridLayout gridLayout;
 
     public GridHolder(BlockContext blockContext, ViewGroup parent) {

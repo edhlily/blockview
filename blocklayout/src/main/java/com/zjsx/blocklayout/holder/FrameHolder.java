@@ -5,10 +5,11 @@ import android.widget.FrameLayout;
 
 import com.zjsx.blocklayout.config.BlockConfig;
 import com.zjsx.blocklayout.config.BlockContext;
+import com.zjsx.blocklayout.config.ChildManualRecycle;
 import com.zjsx.blocklayout.module.Block;
 import com.zjsx.blocklayout.module.Frame;
 
-public class FrameHolder extends BlockHolder<Frame> {
+public class FrameHolder extends BlockHolder<Frame> implements ChildManualRecycle{
     public FrameLayout mFrameLayout;
 
     public FrameHolder(BlockContext blockContext, ViewGroup parent) {

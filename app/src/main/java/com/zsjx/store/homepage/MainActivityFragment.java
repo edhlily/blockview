@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.zjsx.blocklayout.config.BlockContext;
 import com.zjsx.blocklayout.module.Block;
@@ -31,6 +32,8 @@ public class MainActivityFragment extends Fragment implements BlockView.BlockCli
 
     boolean isLoadingNewIndex;
 
+    Toast fastToast;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -42,6 +45,7 @@ public class MainActivityFragment extends Fragment implements BlockView.BlockCli
         super.onActivityCreated(savedInstanceState);
         mainFragmentBar = new MainActivityFragmentBar(this);
         mainFragmentBar.setBar();
+
         initView();
 
         String demoConfig = getActivity().getIntent().getStringExtra("demoConfig");
@@ -120,7 +124,14 @@ public class MainActivityFragment extends Fragment implements BlockView.BlockCli
 
         Uri uri = Uri.parse(link);
 
-        if (uri == null) return;
+        if (uri == null || uri.getScheme() == null) {
+            if (link != null) {
+                fastToast(link);
+            } else {
+                fastToast(block.getName());
+            }
+            return;
+        }
 
         if (uri.getScheme().equalsIgnoreCase("window")) {
             if (uri.getHost().equalsIgnoreCase("demo")) {
@@ -143,5 +154,20 @@ public class MainActivityFragment extends Fragment implements BlockView.BlockCli
                 DToast.showLong(uri.getQueryParameter("message"));
             }
         }
+    }
+
+
+    void fastToast(String message) {
+
+        if (fastToast != null) {
+            fastToast.cancel();
+        }
+
+        if (message == null) {
+            message = "no link or name was set!";
+        }
+
+        fastToast = Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT);
+        fastToast.show();
     }
 }

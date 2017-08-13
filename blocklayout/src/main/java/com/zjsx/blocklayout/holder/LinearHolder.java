@@ -5,11 +5,12 @@ import android.widget.LinearLayout;
 
 import com.zjsx.blocklayout.config.BlockConfig;
 import com.zjsx.blocklayout.config.BlockContext;
+import com.zjsx.blocklayout.config.ChildManualRecycle;
 import com.zjsx.blocklayout.module.Block;
 import com.zjsx.blocklayout.module.Linear;
 import com.zjsx.blocklayout.widget.roundview.RoundLinearLayout;
 
-public class LinearHolder extends BlockHolder<Linear> {
+public class LinearHolder extends BlockHolder<Linear> implements ChildManualRecycle {
     public RoundLinearLayout mLinearLayout;
 
     public LinearHolder(BlockContext blockContext, ViewGroup parent) {

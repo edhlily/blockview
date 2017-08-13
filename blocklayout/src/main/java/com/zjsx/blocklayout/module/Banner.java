@@ -6,6 +6,7 @@ public abstract class Banner<T extends Banner<T>> extends Block<T> {
     private int duration;
     private int delay;
     private boolean manual;
+    private boolean reverse;
     private boolean autoScroll;
     private ArrayList<Block> items;
 
@@ -60,5 +61,13 @@ public abstract class Banner<T extends Banner<T>> extends Block<T> {
 
     public void setAutoScroll(boolean autoScroll) {
         this.autoScroll = autoScroll;
+    }
+
+    public boolean isReverse() {
+        return reverse;
+    }
+
+    public void setReverse(boolean reverse) {
+        this.reverse = reverse;
     }
 }

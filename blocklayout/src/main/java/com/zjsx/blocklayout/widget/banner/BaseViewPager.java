@@ -17,9 +17,11 @@ package com.zjsx.blocklayout.widget.banner;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.IntDef;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.animation.Interpolator;
 
 import java.lang.reflect.Field;
@@ -37,6 +39,8 @@ public abstract class BaseViewPager extends ViewPager {
     }
 
     int mScrollState;
+
+    public int direction = 1;
 
     public BaseViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -91,6 +95,13 @@ public abstract class BaseViewPager extends ViewPager {
     }
 
     private ScrollerCustomDuration mScroller = null;
+    private Interpolator mInterpolator = new Interpolator() {
+        @Override
+        public float getInterpolation(float t) {
+            t -= 1.0f;
+            return t * t * t * t * t + 1.0f;
+        }
+    };
 
     /**
      * Override the Scroller instance with our own class so we can change the
@@ -104,14 +115,7 @@ public abstract class BaseViewPager extends ViewPager {
             Field interpolator = viewpager.getDeclaredField("sInterpolator");
             interpolator.setAccessible(true);
 
-            mScroller = new ScrollerCustomDuration(getContext(),
-                    new Interpolator() {
-                        @Override
-                        public float getInterpolation(float t) {
-                            t -= 1.0f;
-                            return t * t * t * t * t + 1.0f;
-                        }
-                    });
+            mScroller = new ScrollerCustomDuration(getContext(),mInterpolator);
             scroller.set(this, mScroller);
         } catch (Exception e) {
         }
@@ -147,7 +151,15 @@ public abstract class BaseViewPager extends ViewPager {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if (autoScroll) {
-                setCurrentItem(getCurrentItem() + 1, true);
+                int nextItem;
+                if (getCurrentItem() == 0 && direction < 0) {
+                    nextItem = getAdapter().getCount();
+                } else if (getCurrentItem() == getAdapter().getCount() - 1 && direction > 0) {
+                    nextItem = 0;
+                } else {
+                    nextItem = getCurrentItem() + direction;
+                }
+                setCurrentItem(nextItem);
             }
         }
     };
@@ -194,5 +206,26 @@ public abstract class BaseViewPager extends ViewPager {
         setCurrentItem(getCurrentItem());
         pauseScroll();
         super.onDetachedFromWindow();
+    }
+
+    @Override
+    protected void onWindowVisibilityChanged(int visibility) {
+        super.onWindowVisibilityChanged(visibility);
+        if (visibility == GONE) {
+            pauseScroll();
+        } else {
+            goOnScroll();
+        }
+    }
+
+    public int getDirection() {
+        return direction;
+    }
+
+    public void setDirection(int direction) {
+        if (Math.abs(direction) != 1) {
+            throw new RuntimeException("direction must be 1 or -1!");
+        }
+        this.direction = direction;
     }
 }

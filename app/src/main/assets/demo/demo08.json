@@ -1,0 +1,69 @@
+{
+  "layout": "grid",
+  "cellCount": 2,
+  "backColor": "#000000",
+  "debug": true,
+  "version": 1.0,
+  "modules": [
+    {
+      "type": "horizontalBanner",
+      "height": "0.4sw",
+      "autoScroll": true,
+      "manual": true,
+      "duration": 1000,
+      "delay": 1000,
+      "items": [
+        {
+          "type": "text",
+          "gravity": "center",
+          "textStyle": "bold",
+          "textSize": "20sp",
+          "backColor": "#FFFFFF",
+          "text": "demo演示",
+          "link": "window://demo?demoConfig=demo%2fstart.json"
+        },
+        {
+          "type": "text",
+          "gravity": "center",
+          "textStyle": "bold",
+          "textSize": "20sp",
+          "backColor": "#FFFFFF",
+          "text": "demo演示",
+          "link": "window://demo?demoConfig=demo%2fstart.json"
+        }
+      ]
+    },
+    {
+      "type": "horizontalBanner",
+      "backImage": "assets/taobao01/images/taobao (13).gif",
+      "height": "0.212sw",
+      "autoScroll": true,
+      "manual": true,
+      "reverse": true,
+      "duration": 1000,
+      "delay": 1000,
+      "items": [
+        {
+          "type": "text",
+          "gravity": "center",
+          "textStyle": "bold",
+          "textSize": "20sp",
+          "backColor": "#99000000",
+          "textColor": "#FFFFFF",
+          "text": "我的github地址",
+          "link": "http://github.com/zjsx"
+        },
+        {
+          "type": "text",
+          "gravity": "center",
+          "textStyle": "bold",
+          "textSize": "20sp",
+          "backColor": "#99000000",
+          "textColor": "#FFFFFF",
+          "text": "我的github地址",
+          "link": "http://github.com/zjsx"
+        }
+      ]
+    }
+  ]
+}

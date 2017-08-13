@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 
 import com.zjsx.blocklayout.config.BlockConfig;
 import com.zjsx.blocklayout.config.BlockContext;
+import com.zjsx.blocklayout.config.ChildManualRecycle;
 import com.zjsx.blocklayout.module.Block;
 import com.zjsx.blocklayout.module.VerticalBanner;
 import com.zjsx.blocklayout.widget.banner.VerticalViewPager;
@@ -14,10 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class VerticalBannerHolder extends BlockHolder<VerticalBanner> {
+public class VerticalBannerHolder extends BlockHolder<VerticalBanner> implements ChildManualRecycle {
     VerticalViewPager bannerView;
     BannerAdapter adapter;
     final List<Block> mDatas = new ArrayList<>();
+    int start;
 
     public VerticalBannerHolder(BlockContext blockContext, ViewGroup parent) {
         super(blockContext, new VerticalViewPager(parent.getContext()), BlockConfig.getInstance().getViewType(VerticalBanner.class));
@@ -34,6 +36,17 @@ public class VerticalBannerHolder extends BlockHolder<VerticalBanner> {
         bannerView.setManual(banner.isManual());
         bannerView.setScrollDelay(banner.getRealDelay());
         bannerView.setScrollDuration(banner.getRealDuration());
+
+        if (banner.isReverse()) {
+            bannerView.setCurrentItem(adapter.getCount() - 1);
+            bannerView.setDirection(-1);
+            start = adapter.getCount() - 1;
+        } else {
+            bannerView.setCurrentItem(0);
+            bannerView.setDirection(1);
+            start = 0;
+        }
+
         if (banner.isAutoScroll()) {
             bannerView.autoScroll();
         } else {
@@ -54,7 +67,7 @@ public class VerticalBannerHolder extends BlockHolder<VerticalBanner> {
 
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
-            Block item = mDatas.get(position % mDatas.size());
+            Block item = mDatas.get((start + bannerView.getDirection() * position) % mDatas.size());
             BlockHolder itemHolder = getRecylerViewHolder(item.getClass());
             if (itemHolder == null) {
                 itemHolder = item.getHolder(blockContext, bannerView);
