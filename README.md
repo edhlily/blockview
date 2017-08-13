@@ -20,6 +20,7 @@ regesterBlock("image", new ImageItem());//图片控件
 regesterBlock("verticalBanner", new VerticalBanner());//垂直滚动的Banner
 regesterBlock("horizontalBanner", new HorizontalBanner());//水平滚动的Banner
 ```
+默认支持的Block说明文档[查看](https://github.com/zjsx/blockview/blob/master/support_view_in_lib.md)
 
 以及9种单位的定义
 
