@@ -83,6 +83,8 @@
 
 效果01：
 
+![demo01](https://github.com/zjsx/blockview/blob/master/screen/demo01.png?raw=true)
+
 #### image
 
 显示图片的模块，同Android中的ImageView
@@ -109,6 +111,8 @@
 ```
 
 效果02：
+
+![demo02](https://github.com/zjsx/blockview/blob/master/screen/demo02.png?raw=true)
 
 ### 容器：可以添加其它容器或者控件的布局模块
 
@@ -165,6 +169,8 @@
 
 效果03：
 
+![demo03](https://github.com/zjsx/blockview/blob/master/screen/demo03.png?raw=true)
+
 #### linear
 
 正如Android中的LinearLayout一样，可以纵向或者横向排列子控件。
@@ -219,6 +225,8 @@
 ```
 
 效果04：
+
+![demo04](https://github.com/zjsx/blockview/blob/master/screen/demo04.png?raw=true)
 
 #### table
 
@@ -279,7 +287,7 @@
 
 效果05：
 
-
+![demo05](https://github.com/zjsx/blockview/blob/master/screen/demo05.png?raw=true)
 
 #### grid
 
@@ -435,6 +443,8 @@
 
 效果06：
 
+![demo06](https://github.com/zjsx/blockview/blob/master/screen/demo06.png?raw=true)
+
 #### gallery
 
 gallery里面的子控件是可以横向滑动的，对应Android里面横向滚动的RecyclerView。
@@ -479,6 +489,8 @@ gallery里面的子控件是可以横向滑动的，对应Android里面横向滚
 ```
 
 效果07：
+
+![demo07](https://github.com/zjsx/blockview/blob/master/screen/demo07.gif?raw=true)
 
 #### verticalBanner
 
@@ -569,6 +581,8 @@ gallery里面的子控件是可以横向滑动的，对应Android里面横向滚
 
 效果08：
 
+![demo08](https://github.com/zjsx/blockview/blob/master/screen/demo08.gif?raw=true)
+
 #### horizontalBanner
 
 上下滚动的Banner，除reverse外，其它属性和verticalBanner一致。
@@ -651,3 +665,5 @@ gallery里面的子控件是可以横向滑动的，对应Android里面横向滚
 ```
 
 效果09：
+
+![demo09](https://github.com/zjsx/blockview/blob/master/screen/demo09.gif?raw=true)
