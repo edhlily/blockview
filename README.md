@@ -1,4 +1,4 @@
-# blockview
+# blockview(已废弃，请使用[Tangram](https://github.com/alibaba/Tangram-Android)
 Android动态格子布局（淘宝，京东等首页）
 
 ![仿淘宝](https://github.com/zjsx/blockview/blob/master/screen/taobao.gif?raw=true)
